@@ -1,0 +1,88 @@
+import MetaTrader5 as mt5
+from datetime import datetime
+
+def connect():
+    mt5.initialize(login=88867740, server="OctaFX-Demo",password="BUzAXe8e")
+    authorized=mt5.initialize(login=88867740, server="OctaFX-Demo",password="BUzAXe8e")
+    if authorized:
+        print("Connected: Connecting to MT5 Client")
+    else:
+        print("Failed to connect at account #{}, error code: {}"
+              .format(account, mt5.last_error()))      
+
+
+
+def open_position(pair, order_type, size, tp_distance=None, stop_distance=None):
+    symbol_info = mt5.symbol_info(pair)
+    if symbol_info is None:
+        print(pair, "not found")
+        return
+
+    if not symbol_info.visible:
+        print(pair, "is not visible, trying to swiconnect(39672374)tch on")
+        if not mt5.symbol_select(pair, True):
+            print("symbol_select({}}) failed, exit",pair)
+            return
+    print(pair, "found!")
+
+    point = symbol_info.point
+    if(order_type == "BUY"):
+        order = mt5.ORDER_TYPE_BUY
+        price = mt5.symbol_info_tick(pair).ask
+        if(stop_distance):
+            sl = price - (stop_distance * point)
+        if(tp_distance):
+            tp = price + (tp_distance * point)
+            
+    if(order_type == "SELL"):
+        order = mt5.ORDER_TYPE_SELL
+        price = mt5.symbol_info_tick(pair).bid
+        if(stop_distance):
+            sl = price + (stop_distance * point)
+        if(tp_distance):
+            tp = price - (tp_distance * point)
+    sl_select = 0        
+    if sl_select == 0:
+        request = {
+            "action": mt5.TRADE_ACTION_DEAL,
+            "symbol": pair,
+            "volume": float(size),
+            "type": order,
+            "price": price,
+            "tp": tp,
+            "magic": 234000,
+            "comment": "",
+            "type_time": mt5.ORDER_TIME_GTC,
+            "type_filling": mt5.ORDER_FILLING_FOK,
+            }
+    else:    
+        request = {
+            "action": mt5.TRADE_ACTION_DEAL,
+            "symbol": pair,
+            "volume": float(size),
+            "type": order,
+            "price": price,
+            "sl": sl,
+            "tp": tp,
+            "magic": 234000,
+            "comment": "",
+            "type_time": mt5.ORDER_TIME_GTC,
+            "type_filling": mt5.ORDER_FILLING_FOK,
+        }
+    
+    result = mt5.order_send(request)
+
+    if result.retcode != mt5.TRADE_RETCODE_DONE:
+        print("Failed to send order :(")
+        print(result)
+    else:
+        print ("Order successfully placed!")
+
+def status():
+    total_oders = str(mt5.orders_total())
+    Running_trades = mt5.positions_total()
+    Running_pairs = mt5.positions_get()
+    print(total_oders)
+    print(Running_trades)
+    print(Running_pairs)
+    
