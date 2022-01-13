@@ -17,19 +17,8 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_BALANCE = "Balance 💰" #download
     STATUS_EQUITY = "EQUITY... ⚖️"
-    STATUS_POSITION = "Total positions.. 📈 "
-    STATUS_FAILED = "Failed 🚫. Cleaning Download..."
-    STATUS_PAUSE = "Paused...⛔️"
-    STATUS_ARCHIVING = "Archiving...🔐"
-    STATUS_EXTRACTING = "Extracting...📂"
-    STATUS_SPLITTING = "Splitting...✂️"
-    STATUS_CHECKING = "CheckingUp...📝"
-    STATUS_SEEDING = "Seeding...🌧"
-
-SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
-
+    STATUS_PRICE = "Current Price "
 
 class setInterval:
     def __init__(self, interval, action):
@@ -48,63 +37,8 @@ class setInterval:
     def cancel(self):
         self.stopEvent.set()
 
-def get_readable_file_size(size_in_bytes) -> str:
-    if size_in_bytes is None:
-        return '0B'
-    index = 0
-    while size_in_bytes >= 1024:
-        size_in_bytes /= 1024
-        index += 1
-    try:
-        return f'{round(size_in_bytes, 2)}{SIZE_UNITS[index]}'
-    except IndexError:
-        return 'File too large'
 
-def getDownloadByGid(gid):
-    with download_dict_lock:
-        for dl in list(download_dict.values()):
-            status = dl.status()
-            if (
-                status
-                not in [
-                    MirrorStatus.STATUS_ARCHIVING,
-                    MirrorStatus.STATUS_EXTRACTING,
-                    MirrorStatus.STATUS_SPLITTING,
-                ]
-                and dl.gid() == gid
-            ):
-                return dl
-    return None
 
-def getAllDownload():
-    with download_dict_lock:
-        for dlDetails in list(download_dict.values()):
-            status = dlDetails.status()
-            if (
-                status
-                not in [
-                    MirrorStatus.STATUS_ARCHIVING,
-                    MirrorStatus.STATUS_EXTRACTING,
-                    MirrorStatus.STATUS_SPLITTING,
-                    MirrorStatus.STATUS_CLONING,
-                    MirrorStatus.STATUS_UPLOADING,
-                    MirrorStatus.STATUS_CHECKING,
-                ]
-                and dlDetails
-            ):
-                return dlDetails
-    return None
-
-def get_progress_bar_string(status):
-    completed = status.processed_bytes() / 8
-    total = status.size_raw() / 8
-    p = 0 if total == 0 else round(completed * 100 / total)
-    p = min(max(p, 0), 100)
-    cFull = p // 8
-    p_str = '■' * cFull
-    p_str += '□' * (12 - cFull)
-    p_str = f"[{p_str}]"
-    return p_str
 
 def get_readable_message():
     with download_dict_lock:
