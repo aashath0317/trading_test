@@ -260,27 +260,27 @@ def my_handler(client, message):
         text= text_file+".txt"
         f = open(text,'r')
         pair = f.readlines()
-        if pair == ['wad\n', '\n', '    \n', '\n', '|\n', 'Canadian dollar\n', '|\n', '\n', '!\n', '|\n', '\n', 'Sag\n', '\n', '@fmfxofficial #FMPFXofficial #FULLMARGIN\n', '\x0c']:
+        if pair == ['we\n', '\n', 'aa EUR\n', '\n', ' \n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
             pair = "EURCAD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
-        elif pair == ['wad\n', '\n', '@fmfxofficial\n', '\n', ' \n', '\n', 'ustralian dollar\n', 'i\n', 'i\n', '\n', '#FMPFXofficial\n', '\n', '#FULLMARGIN\n', '\x0c']:
+        elif pair == ['a\n', '\n', 'i, EUR\n', '\n', '     \n', '\n', '{i\n', ')\n', 't\n', '\n', 'a\n', 'ustralian dollar\n', '\n', 'I\n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
             pair = "EURAUD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
-        elif pair == ['wad\n', '\n', 'CAD\n', '\n', '  \n', '      \n', '\n', '|\n', '\n', '|\n', '\n', '|\n', '\n', 'Japanese yen\n', '|\n', '\n', '!\n', '!\n', '\n', '|\n', '\n', '(Ohi ehiilereU #FMPFXofficial #FULLMARGIN\n', '\x0c']:
+        elif pair == ['lz\n', '\n', 'CAD\n', '\n', 'Canadian dolla\n', '\n', '    \n', '  \n', ' \n', ' \n', '\n', '{i\n', '|\n', '1\n', 'i\n', '\n', 'Rete NZelAl\n', '!\n', '\n', 'f\n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
             pair = "CADJPY"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
-        elif pair == ['za\n', '\n', 'GBP\n', '\n', '  \n', '\n', '(ine ehiilereu #FMFXofficial #FULLMARGIN\n', '\x0c']:
+        elif pair == ['iz\n', '\n', 'GBP\n', '\n', 'Pound sterling\n', '\n', '    \n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
             pair = "GBPAUD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
-        elif pair == ['FMFX\n', '\n', 'GBP\n', '\n', ' \n', '     \n', '\n', 'Japanese yen\n', '|\n', '\n', 'i\n', 'I\n', '\n', '@fmfxofficial #FMPFXofficial #FULLMARGIN\n', '\x0c']:
+        elif pair == ['ize\n', '\n', 'GBP\n', '\n', 'Pound sterling\n', '\n', '     \n', '  \n', '\n', '|\n', 'Japanese yen\n', '!\n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
             pair = "GBPJPY"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
