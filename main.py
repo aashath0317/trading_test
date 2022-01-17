@@ -48,10 +48,18 @@ def my_handler(client, message):
     if send_channel == "dolor_hiest" and not filetype == None:
         try:
             signal = message.caption.split("\n")
+            print(signal)
             order = signal[0].split("@")[0].strip(" ")
+            print(order)
             price = float(signal[0].split("@")[1].strip(" "))
+            print(price)
             tp = float(signal[2].split(" ")[2])
-            sl = float(signal[5].split(" ")[4])
+            try:
+                sl = float(signal[5].split(" ")[4])
+                print(sl)
+            except IndexError:
+                sl = float(signal[5].split(" ")[2])
+                print(sl)  
             img_name = "dolor_heist.jpg"
             text_file = "dolor_hiest_text"
             if price < tp and price > sl and order == "BUY NOW":
@@ -173,7 +181,8 @@ def my_handler(client, message):
     # Process               DollorHiest Complete
     if send_channel == "dolor_hiest" and need == 1:
         bot.download_media(file_name=img_name,message=message)
-        subprocess.run(["tesseract","downloads/"+img_name,text_file])
+        print("hi")
+        subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
         f = open(text,'r')
         pair = f.readlines()        
@@ -207,7 +216,7 @@ def my_handler(client, message):
                 photo = "downloads/"+img_name
                 caption += f'Uniq string is:\n( {str(pair)} )'
                 bot.send_photo(chat_id=chat_id, caption=caption, photo=photo)
-                bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")
+                bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")  
         except:
             msg = "What is this i don't know about this From DollorHeist\n\n"
             msg += text
@@ -217,7 +226,7 @@ def my_handler(client, message):
     # pips30 Complete
     elif send_channel == "pips30_c2p" and need == 1:
         bot.download_media(file_name=img_name,message=message)
-        subprocess.run(["tesseract","downloads/pips30_c2p.jpg",text_file])
+        subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
         f = open(text,'r')
         pair = f.readlines()
@@ -256,31 +265,31 @@ def my_handler(client, message):
     #getting fmfx
     elif send_channel == "c2p_fmfx" and need == 1:
         bot.download_media(file_name=img_name,message=message)
-        subprocess.run(["tesseract","downloads/"+img_name,text_file])
+        subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
         f = open(text,'r')
         pair = f.readlines()
-        if pair == ['we\n', '\n', 'aa EUR\n', '\n', ' \n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
+        if pair == ['wad\n', '\n', '    \n', '\n', '|\n', 'Canadian dollar\n', '|\n', '\n', '!\n', '|\n', '\n', 'Sag\n', '\n', '@fmfxofficial #FMPFXofficial #FULLMARGIN\n', '\x0c']:
             pair = "EURCAD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
-        elif pair == ['a\n', '\n', 'i, EUR\n', '\n', '     \n', '\n', '{i\n', ')\n', 't\n', '\n', 'a\n', 'ustralian dollar\n', '\n', 'I\n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
+        elif pair == ['wad\n', '\n', '@fmfxofficial\n', '\n', ' \n', '\n', 'ustralian dollar\n', 'i\n', 'i\n', '\n', '#FMPFXofficial\n', '\n', '#FULLMARGIN\n', '\x0c']:
             pair = "EURAUD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
-        elif pair == ['lz\n', '\n', 'CAD\n', '\n', 'Canadian dolla\n', '\n', '    \n', '  \n', ' \n', ' \n', '\n', '{i\n', '|\n', '1\n', 'i\n', '\n', 'Rete NZelAl\n', '!\n', '\n', 'f\n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
+        elif pair == ['wad\n', '\n', 'CAD\n', '\n', '  \n', '      \n', '\n', '|\n', '\n', '|\n', '\n', '|\n', '\n', 'Japanese yen\n', '|\n', '\n', '!\n', '!\n', '\n', '|\n', '\n', '(Ohi ehiilereU #FMPFXofficial #FULLMARGIN\n', '\x0c']:
             pair = "CADJPY"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
-        elif pair == ['iz\n', '\n', 'GBP\n', '\n', 'Pound sterling\n', '\n', '    \n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
+        elif pair == ['za\n', '\n', 'GBP\n', '\n', '  \n', '\n', '(ine ehiilereu #FMFXofficial #FULLMARGIN\n', '\x0c']:
             pair = "GBPAUD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
-        elif pair == ['ize\n', '\n', 'GBP\n', '\n', 'Pound sterling\n', '\n', '     \n', '  \n', '\n', '|\n', 'Japanese yen\n', '!\n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
+        elif pair == ['FMFX\n', '\n', 'GBP\n', '\n', ' \n', '     \n', '\n', 'Japanese yen\n', '|\n', '\n', 'i\n', 'I\n', '\n', '@fmfxofficial #FMPFXofficial #FULLMARGIN\n', '\x0c']:
             pair = "GBPJPY"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
@@ -306,7 +315,7 @@ def my_handler(client, message):
         bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
     elif send_channel == "pips15_c2p" and need == 1:
         bot.download_media(file_name=img_name,message=message)
-        subprocess.run(["tesseract","downloads/"+img_name,text_file])
+        subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
         f = open(text,'r')
         pair = f.readlines()
@@ -318,7 +327,7 @@ def my_handler(client, message):
             pair = "GBPUSD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-        if pair == ['mF\n', 'Zin\n', '\n', 'GBP / AUD\n', '\n', ' \n', '\x0c']:
+        if pair == ['NZ\n', 'Fain\n', '\n', ' \n', '\n', 'GBP / AUD\n', '\x0c']:
             pair = "GBPAUD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
