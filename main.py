@@ -207,7 +207,7 @@ def my_handler(client, message):
                 photo = "downloads/"+img_name
                 caption += f'Uniq string is:\n( {str(pair)} )'
                 bot.send_photo(chat_id=chat_id, caption=caption, photo=photo)
-                bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")  
+                bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")
         except:
             msg = "What is this i don't know about this From DollorHeist\n\n"
             msg += text
@@ -318,7 +318,7 @@ def my_handler(client, message):
             pair = "GBPUSD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-        if pair == ['NZ\n', 'Fain\n', '\n', ' \n', '\n', 'GBP / AUD\n', '\x0c']:
+        if pair == ['mF\n', 'Zin\n', '\n', 'GBP / AUD\n', '\n', ' \n', '\x0c']:
             pair = "GBPAUD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
