@@ -187,7 +187,7 @@ def my_handler(client, message):
         f = open(text,'r')
         pair = f.readlines()        
         try:                          # CHECKING PAIR IN DOLLOR_HIEST
-            if pair == ['NY\n', 'q\n', '\n', ' \n', '\n', 'Sotriemicoeliite Japanese Yen\n', 'SyO nm\n', '@DollarHeistOfficial #DollarHeist LBLYD\n', '\x0c']:
+            if pair == ['m2\n', 'iN\n', '\n', ' \n', '\n', 'Satie eye lites Japanese Yen\n', 'Ora\n', '@DollarHeistOfficial #DollarHeist WEIST\n', '\x0c']:
                 pair = "GBPJPY"
                 text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
                 bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
@@ -195,19 +195,19 @@ def my_handler(client, message):
                 pair = "EURAUD"
                 text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
                 bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-            elif pair == [' \n', '\n', 'Australian Dollar American Dollar\n', '\n', 'a a\n', 'BVO\n', 'ak)\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:
+            elif pair == [' \n', '\n', 'Australian Dollar American Dollar\n', '\n', 'a\n', 'ST OAR)\n', 'Bice\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:
                 pair = "AUDUSD"
                 text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
                 bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-            elif pair == [' \n', '\n', 'Euro Japanese Yen\n', '\n', '— 7\n', 'BVO)\n', 'ak)\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:
+            elif pair == [' \n', '\n', 'Euro Japanese Yen\n', '\n', 'ee ea\n', 'OLLA\n', 'SC a\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:
                 pair = "EURJPY"
                 text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
                 bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-            elif pair == [' \n', '\n', 'Pound Sterling Australian Dollar\n', '\n', '— 7\n', 'STO) nV)\n', 'ak)\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:
+            elif pair == [' \n', '\n', '2\n', 'q\n', '\n', 'Satie eye lites Australian Dollar\n', 'Sg\n', '@DollarHeistOfficial #DollarHeist Eh y\n', '\x0c']:
                 pair = "GBPAUD"
                 text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
                 bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-            elif pair == [' \n', '\n', 'New Zealand Dollar American Dollar\n', '\n', 'a a\n', 'BVO\n', 'ak)\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:
+            elif pair == [' \n', '\n', '|\n', ':\n', ',- FE\n', '_~ ££\n', '\n', 'New Zealand Dollar American Dollar\n', '\n', 'a\n', 'ST OAR)\n', 'Bice\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:
                 pair = "NZDUSD"
                 text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
                 bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
