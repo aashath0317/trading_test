@@ -337,7 +337,8 @@ def my_handler(client, message):
             photo = "downloads/"+img_name
             caption += f'Uniq string is:\n( {str(pair)} )'
             bot.send_photo(chat_id=chat_id, caption=caption, photo=photo)
-            bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")  
+            bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file") 
+    print(pair)
     else:
         pass
 
