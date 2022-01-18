@@ -231,22 +231,22 @@ def my_handler(client, message):
         text= text_file+".txt"
         f = open(text,'r')
         pair = f.readlines()
-        if pair == ['#PIPS30\n', '\n', 'a\n', 'a\n', 'fe)\n', 'oO\n', '\n', ' \n', '\n', 'AMERICAN DOLLAR\n', '\x0c']:
+        if pair == ['#PIPS30\n', '\n', 'a\n', 'a\n', 're}\n', 'oO\n', '\n', ' \n', '\n', 'AMERICAN DOLLAR\n', '\n', 'Fe\n', '\n', "PIPS'\n", '\x0c']:
             pair = "XAUUSD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom PIPS 30"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
-        elif pair == [' \n', '\n', 'RO 4) #PIPS30\n', '\n', 'POUND STERLING\n', '\n', 'JAPANESE YEN\n', '\n', ' \n', '\n', ' \n', '\n', 'uo\n', 'SG\n', '\x0c']:
+        elif pair ==  ['#PIPS3O\n', '\n', 'POUND STERLING\n', '\n', 'A\n', '\n', 'JAPANESE YEN\n', '\n', ' \n', '\n', 'lo\n', '.\n', '\x0c']:
             pair = "GBPJPY"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom PIPS 30"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
-        elif pair == [' \n', '\n', 'MES La) #PIPS30\n', '\n', ' \n', '\n', 'NEW ZEALAND DOLLAR\n', '\n', ' \n', '\n', 'AMERICAN DOLLAR\n', '\n', ' \n', '\n', ' \n', '\x0c']:
+        elif pair ==  ['oa #PIPS30\n', '\n', ' \n', '\n', 'NEW ZEALAND DOLLAR\n', '\n', ' \n', '\n', ' \n', '\n', 'AMERICAN DOLLAR\n', '\n', ' \n', '\n', ' \n', '\x0c'] :
             pair = "NZDUSD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom PIPS 30"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
-        elif pair == ['ee) #PIPS30\n', '\n', ' \n', '\n', '2010) SP R-9 a 1518 Te)\n', '\n', ' \n', '\n', 'AMERICAN DOLLAR\n', '\n', ' \n', '\n', ' \n', '\x0c']:
+        elif pair == ['#PIPS3O\n', '\n', 'P\n', '\n', 'POUND STERLING\n', '\n', '0 14 piu GEST)\n', '\n', ' \n', '\n', 'AMERICAN DOLLAR\n', '\n', ' \n', '\n', ' \n', '\n', 'aa\n', '\x0c']:
             pair = "GBPUSD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom PIPS 30"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
