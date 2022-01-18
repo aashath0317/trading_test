@@ -212,6 +212,7 @@ def my_handler(client, message):
                 text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
                 bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
             else:
+                print(pair)
                 caption = f'I cant resolve this photo From {send_channel} \n\n'
                 photo = "downloads/"+img_name
                 caption += f'Uniq string is:\n( {str(pair)} )'
@@ -340,7 +341,7 @@ def my_handler(client, message):
             bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file") 
     else:
         pass
-    print(pair)
+   
 
 subprocess.run(["rm","*.session","*.session-journal"])
 bot.run()
