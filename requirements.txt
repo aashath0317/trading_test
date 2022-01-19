@@ -2,6 +2,7 @@ aiohttp
 feedparser
 gc-python-utils
 gunicorn
+Flask
 lk21
 lxml
 pillow
