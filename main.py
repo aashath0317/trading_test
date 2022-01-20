@@ -49,6 +49,7 @@ def update(client, message):
                         message_id = bot.send_message(chat_id=owner_id, text=message, parse_mode=telegram.ParseMode.HTML)
                         time.sleep(5)
                         message = "Updated"
+                        message_id = bot.send_message(chat_id=owner_id, text=message, parse_mode=telegram.ParseMode.HTML)
                         spawn_program_and_die(['bash', 'start.sh'])
                         
 
@@ -340,24 +341,52 @@ def my_handler(client, message):
     elif send_channel == "c2p_pro" and need == 2:
         text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom Professor"
         bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
+            
     elif send_channel == "pips15_c2p" and need == 1:
         bot.download_media(file_name=img_name,message=message)
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
         f = open(text,'r')
         pair = f.readlines()
-        if pair == ['=\n', 'USD / CHF\n', '\x0c']:
+        if pair == ['= og\n', '\n', 'USD / CHF\n', '\x0c']:
             pair = "USDCHF"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-        if pair == ['NA =\n', 'Ry WN ———|\n', '\n', 'GBP / USD\n', '\x0c']:
-            pair = "GBPUSD"
+        if pair == ['\x0c']:
+            subprocess.run(["tesseract","downloads/"+img_name,text_file])
+            text= text_file+".txt"
+            f = open(text,'r')
+            pair = f.readlines()
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-        if pair == ['NZ\n', 'Fain\n', '\n', ' \n', '\n', 'GBP / AUD\n', '\x0c']:
+        if pair == [' \n', '\n', 'EUR / AUD\n', '\x0c']:
+            pair = "EURAUD"
+            text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
+            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)            
+        if pair == [' \n', '\n', 'NZD / CAD\n', '\x0c']:
+            pair = "NZDCAD"
+            text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
+            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML) 
+        if pair == [' \n', '\n', 'NZD / JPY\n', '\x0c']:
+            pair = "NZDJPY"
+            text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
+            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML) 
+        if pair == ['=—— @\n', '\n', 'USD / JPY\n', '\x0c']:
+            pair = "USDJPY"
+            text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
+            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML) 
+        if pair ==  ['mF\n', 'Zin\n', '\n', 'GBP / AUD\n', '\n', ' \n', '\x0c']:
             pair = "GBPAUD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
-            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
+            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML) 
+        if pair == ['ivi Ea\n', '\n', 'CAD / CHF\n', '\x0c']:
+            pair = "GBPAUD"
+            text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
+            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML) 
+        if pair == ['ivi Ea\n', '\n', 'CAD / CHF\n', '\x0cf']:
+            pair = "CADCHF"
+            text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
+            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)           
         else:
             print(pair)
             caption = f'I cant resolve this photo From {send_channel} \n\n'
@@ -369,5 +398,4 @@ def my_handler(client, message):
         pass
 
 
-print("bot started")
 bot.run()
