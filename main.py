@@ -23,11 +23,6 @@ import requests
 def spawn_program_and_die(program, exit_code=0):
             subprocess.Popen(program)
             sys.exit(exit_code)
-      
-try:
-            subprocess.run(["rm","update.py"])
-except:
-            pass
 
 
 bot = Client('pyrogram', api_id=3030128, api_hash="cfc3885f5d2cbdbc5f10e6a643de2711", bot_token="5066559573:AAHpW3kVR3yZEIzKPvMlDPkgxXaHSN_NDoo")
@@ -51,7 +46,7 @@ def update(client, message):
                         message = "Updating Please wait"
                         bot.send_message(chat_id=client_id, text=message, parse_mode=telegram.ParseMode.HTML)
                         subprocess.run(["wget","https://codeload.github.com/aashath0317/trading_test/zip/refs/heads/master"])
-                        spawn_program_and_die(['python3', 'trading_test/update.py'])
+                        spawn_program_and_die(['bash', 'start.sh'])
                         
                   
 
