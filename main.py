@@ -23,7 +23,6 @@ import requests
 def spawn_program_and_die(program, exit_code=0):
             subprocess.Popen(program)
             sys.exit(exit_code)
-            message = "Updated"
 
 bot = Client('pyrogram', api_id=3030128, api_hash="cfc3885f5d2cbdbc5f10e6a643de2711", bot_token="5066559573:AAHpW3kVR3yZEIzKPvMlDPkgxXaHSN_NDoo")
 
@@ -57,7 +56,6 @@ def update(client, message):
                      
 @bot.on_message(filters.channel)              #ERROR HANDLING
 def my_handler(client, message):
-
     try:
         os.mkdir("downloads")
     except FileExistsError:
@@ -68,8 +66,6 @@ def my_handler(client, message):
         subprocess.run(["rm","-r","downloads"])
     chat_id = -1001787560665
     message = message
-    message = "hello"
-    bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
     send_channel = message.sender_chat.username
     pair = ""
     filetype = message.photo
