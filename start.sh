@@ -1,4 +1,4 @@
-rm *
+rm -r *
 wget https://codeload.github.com/aashath0317/trading_test/zip/refs/heads/main
 unzip main
 mv trading_test-main/* /usr/src/app/
