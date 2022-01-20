@@ -1,5 +1,5 @@
 rm main.py
-wget https://codeload.github.com/aashath0317/trading_test/zip/refs/heads/master
-unzip master
-mv trading_test/* /usr/src/app/
+wget https://codeload.github.com/aashath0317/trading_test/zip/refs/heads/main
+unzip main
+mv trading_test-main/* /usr/src/app/
 python3 main.py
