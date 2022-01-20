@@ -36,18 +36,7 @@ channels = {-1787560665: {'type': 'channel', 'trading': 'str_long', 'url': '@myf
 
 
  
-@bot.on_message()            
-def check(client, message):
-            try:
-                        text_file = open("catch.txt","r")
-                        stri = int(text_file.read())
-                        stri = stri.split("\n")
-                        message_id = int(stri[0])
-                        owner_id = int(stri[1])
-                        bot.edit_message_text(chat_id=owner_id ,message_id= message_id, text = "restarted")
-            except:
-                        pass
-            
+           
 @bot.on_message(filters.command("update"))
 def update(client, message):
             owner_id = message.chat.id
@@ -384,5 +373,5 @@ def my_handler(client, message):
     else:
         pass
    
-
+print("bot started")
 bot.run()
