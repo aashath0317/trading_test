@@ -46,14 +46,10 @@ def update(client, message):
                         bot.send_message(chat_id=client_id, text=message, parse_mode=telegram.ParseMode.HTML)
             
             else:
-                        message = "Updating Please wait"
-                        message_id = bot.send_message(chat_id=client_id, text=message, parse_mode=telegram.ParseMode.HTML)
-                        message_id = message_id.message_id
-                        text_file = open("catch.txt","w")
-                        message_id = str(message_id)
-                        owner_id = str(owner_id)
-                        text_file.write(f'{message_id}\n{owner_id}')
-                        text_file.close
+                        message = "Updating"
+                        message_id = bot.send_message(chat_id=owner_id, text=message, parse_mode=telegram.ParseMode.HTML)
+                        time.sleep(5)
+                        message = "Updated"
                         spawn_program_and_die(['bash', 'start.sh'])
                         
 
@@ -61,6 +57,7 @@ def update(client, message):
                      
 @bot.on_message(filters.channel)              #ERROR HANDLING
 def my_handler(client, message):
+
     try:
         os.mkdir("downloads")
     except FileExistsError:
@@ -71,6 +68,8 @@ def my_handler(client, message):
         subprocess.run(["rm","-r","downloads"])
     chat_id = -1001787560665
     message = message
+    message = "hello"
+    bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
     send_channel = message.sender_chat.username
     pair = ""
     filetype = message.photo
@@ -372,6 +371,7 @@ def my_handler(client, message):
             bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file") 
     else:
         pass
-   
+
+
 print("bot started")
 bot.run()
