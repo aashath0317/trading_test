@@ -34,7 +34,11 @@ channels = {-1787560665: {'type': 'channel', 'trading': 'str_long', 'url': '@myf
             -1662289372: {'type': 'channel', 'trading': 'scalping', 'url': '@c2p_fmfx'},
             -1795072861: {'type': 'channel', 'trading': 'scalping', 'url': '@pips15_c2p'}}  
 
-try:
+
+ 
+@bot.on_message()            
+def check(client, message):
+            try:
             text_file = open("catch.txt","r")
             stri = int(text_file.read())
             stri = stri.split("\n")
@@ -64,6 +68,8 @@ def update(client, message):
                         spawn_program_and_die(['bash', 'start.sh'])
                         
 
+                        
+                     
 @bot.on_message(filters.channel)              #ERROR HANDLING
 def my_handler(client, message):
     try:
@@ -379,5 +385,4 @@ def my_handler(client, message):
         pass
    
 
-subprocess.run(["rm","*.session","*.session-journal"])
 bot.run()
