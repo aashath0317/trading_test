@@ -15,9 +15,20 @@ from pyrogram import filters
 import sys, traceback
 import os
 import subprocess
+import sys
 from datetime import datetime
 import glob
 import requests
+
+def spawn_program_and_die(program, exit_code=0):
+            subprocess.Popen(program)
+            sys.exit(exit_code)
+      
+try:
+            subprocess.run(["rm","update.py"])
+except:
+            pass
+
 
 bot = Client('pyrogram', api_id=3030128, api_hash="cfc3885f5d2cbdbc5f10e6a643de2711", bot_token="5066559573:AAHpW3kVR3yZEIzKPvMlDPkgxXaHSN_NDoo")
 
@@ -27,6 +38,24 @@ channels = {-1787560665: {'type': 'channel', 'trading': 'str_long', 'url': '@myf
             -1631407380: {'type': 'channel', 'trading': 'scalping', 'url': '@c2p_pro'},
             -1662289372: {'type': 'channel', 'trading': 'scalping', 'url': '@c2p_fmfx'},
             -1795072861: {'type': 'channel', 'trading': 'scalping', 'url': '@pips15_c2p'}}  
+
+@Client.on_message(filters.command("update"))
+def update(client, message):
+            owner_id = message.chat.id
+            if not owner_id == 1273430546:
+                        client_id = message.chat.id
+                        message = "Sorry Your not a owner this command only work for owner"
+                        bot.send_message(chat_id=client_id, text=message, parse_mode=telegram.ParseMode.HTML)
+            
+            else:
+                        message = "Updating Please wait"
+                        bot.send_message(chat_id=client_id, text=message, parse_mode=telegram.ParseMode.HTML)
+                        subprocess.run(["wget","https://codeload.github.com/aashath0317/trading_test/zip/refs/heads/master"])
+                        spawn_program_and_die(['python3', 'trading_test/update.py'])
+                        
+                  
+
+
 
 @bot.on_message(filters.channel)              #ERROR HANDLING
 def my_handler(client, message):
