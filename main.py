@@ -357,7 +357,7 @@ def my_handler(client, message):
             text= text_file+".txt"
             f = open(text,'r')
             pair = f.readlines()
-            text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
+            text = order+","+str(pair)+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
         if pair == [' \n', '\n', 'EUR / AUD\n', '\x0c']:
             pair = "EURAUD"
