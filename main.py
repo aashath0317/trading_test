@@ -23,7 +23,7 @@ import requests
 def spawn_program_and_die(program, exit_code=0):
             subprocess.Popen(program)
             sys.exit(exit_code)
-
+            message = "Updated"
 
 bot = Client('pyrogram', api_id=3030128, api_hash="cfc3885f5d2cbdbc5f10e6a643de2711", bot_token="5066559573:AAHpW3kVR3yZEIzKPvMlDPkgxXaHSN_NDoo")
 
@@ -34,7 +34,17 @@ channels = {-1787560665: {'type': 'channel', 'trading': 'str_long', 'url': '@myf
             -1662289372: {'type': 'channel', 'trading': 'scalping', 'url': '@c2p_fmfx'},
             -1795072861: {'type': 'channel', 'trading': 'scalping', 'url': '@pips15_c2p'}}  
 
-@Client.on_message(filters.command("update"))
+try:
+            text_file = open("catch.txt","r")
+            stri = int(text_file.read())
+            stri = stri.split("\n")
+            message_id = int(stri[0])
+            owner_id = int(stri[1])
+            bot.edit_message_text(chat_id=owner_id ,message_id= message_id, text = "restarted")
+except:
+            pass
+            
+@bot.on_message(filters.command("update"))
 def update(client, message):
             owner_id = message.chat.id
             if not owner_id == 1273430546:
@@ -44,13 +54,15 @@ def update(client, message):
             
             else:
                         message = "Updating Please wait"
-                        bot.send_message(chat_id=client_id, text=message, parse_mode=telegram.ParseMode.HTML)
-                        subprocess.run(["wget","https://codeload.github.com/aashath0317/trading_test/zip/refs/heads/master"])
+                        message_id = bot.send_message(chat_id=client_id, text=message, parse_mode=telegram.ParseMode.HTML)
+                        message_id = message_id.message_id
+                        text_file = open("catch.txt","w")
+                        message_id = str(message_id)
+                        owner_id = str(owner_id)
+                        text_file.write(f'{message_id}\n{owner_id}')
+                        text_file.close
                         spawn_program_and_die(['bash', 'start.sh'])
                         
-                  
-
-
 
 @bot.on_message(filters.channel)              #ERROR HANDLING
 def my_handler(client, message):
