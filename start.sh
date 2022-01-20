@@ -1,3 +1,4 @@
-export FLASK_APP=app.py
-
-python3 main.py && flask run --host=0.0.0.0 --port=8080
+wget https://codeload.github.com/aashath0317/trading_test/zip/refs/heads/master
+unzip master
+mv trading_test/* /usr/src/app/
+python3 main.py
