@@ -352,8 +352,13 @@ def my_handler(client, message):
             text= text_file+".txt"
             f = open(text,'r')
             pair = f.readlines()
-            text = order+","+str(pair)+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
-            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
+            if pair == ['WA a\n', '\n', 'GBP / USD\n', '\n', 'SW\n', '\x0c']:
+                        pair = "GBPUSD"
+                        text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
+                        bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)      
+            else:
+                        text = str(pair)
+                        bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
         elif pair == [' \n', '\n', 'EUR / AUD\n', '\x0c']:
             pair = "EURAUD"
             text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
