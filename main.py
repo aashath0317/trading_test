@@ -45,11 +45,6 @@ def update(client, message):
                         bot.send_message(chat_id=client_id, text=message, parse_mode=telegram.ParseMode.HTML)
             
             else:
-                        message = "Updating"
-                        message_id = bot.send_message(chat_id=owner_id, text=message, parse_mode=telegram.ParseMode.HTML)
-                        time.sleep(5)
-                        message = "Updated"
-                        message_id = bot.send_message(chat_id=owner_id, text=message, parse_mode=telegram.ParseMode.HTML)
                         spawn_program_and_die(['bash', 'start.sh'])
                         
 
