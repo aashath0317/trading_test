@@ -26,12 +26,11 @@ def spawn_program_and_die(program, exit_code=0):
 
 bot = Client('pyrogram', api_id=3030128, api_hash="cfc3885f5d2cbdbc5f10e6a643de2711", bot_token="5066559573:AAHpW3kVR3yZEIzKPvMlDPkgxXaHSN_NDoo")
 
-channels = {-1787560665: {'type': 'channel', 'trading': 'str_long', 'url': '@myforexc2ptech'},
-            -1601274303: {'type': 'channel', 'trading': 'scalping', 'url': '@dolor_hiest'},
-            -1660396935: {'type': 'channel', 'trading': 'scalping', 'url': '@pips30_c2p'},
-            -1631407380: {'type': 'channel', 'trading': 'scalping', 'url': '@c2p_pro'},
-            -1662289372: {'type': 'channel', 'trading': 'scalping', 'url': '@c2p_fmfx'},
-            -1795072861: {'type': 'channel', 'trading': 'scalping', 'url': '@pips15_c2p'}}  
+channels = {-1001321827535: {'type': 'channel', 'trading': 'scalping', 'url': '@dollarheistofficial'},
+            -1001414997767: {'type': 'channel', 'trading': 'scalping', 'url': '@PIPS30official'},
+            -1001473518645: {'type': 'channel', 'trading': 'scalping', 'url': '@professoroff'},
+            -1001485507442: {'type': 'channel', 'trading': 'scalping', 'url': '@fmfxofficial'},
+            -1001490464609: {'type': 'channel', 'trading': 'scalping', 'url': 'https://t.me/joinchat/AAAAAFjWr2HofJCa8C0k2w'}}  
 
 
  
@@ -62,12 +61,12 @@ def my_handler(client, message):
         subprocess.run(["rm","-r","downloads"])
     chat_id = -1001787560665
     message = message
-    send_channel = message.sender_chat.username
+    send_channel = message.chat.id
     pair = ""
     filetype = message.photo
     filetype_text = message.text
     need = 0                                           # GETTING TP ,SL, ORDER, Professor pair and setting working only signal
-    if send_channel == "dolor_hiest" and not filetype == None:
+    if send_channel == -1001414997767 and not filetype == None:
         try:
             signal = message.caption.split("\n")
             print(signal)
@@ -96,7 +95,7 @@ def my_handler(client, message):
             need = 0
 
  
-    elif send_channel == "pips30_c2p" and not filetype == None:
+    elif send_channel == -1001414997767 and not filetype == None:
         try:
             signal = message.caption.split("\n")
             order = signal[0].split(" ")[0]
@@ -125,7 +124,7 @@ def my_handler(client, message):
             need = 0
 
         
-    elif send_channel == "c2p_fmfx" and not filetype == None:
+    elif send_channel == -1001485507442 and not filetype == None:
         try:
             img_name = "c2p_fmfx.jpg"
             text_file = "c2p_fmfx"
@@ -145,7 +144,7 @@ def my_handler(client, message):
         except IndexError:
             need = 0                
 
-    elif send_channel == "pips15_c2p" and not filetype == None:
+    elif send_channel == -1001490464609 and not filetype == None:
         try:
             img_name = "pips15_c2p.jpg"
             text_file = "pips15_c2p"
@@ -173,7 +172,7 @@ def my_handler(client, message):
         except IndexError:
             need = 0
 
-    elif send_channel == "c2p_pro" and filetype == None:
+    elif send_channel == -1001473518645 and filetype == None:
         try:
             signal = filetype_text.split("\n")
             need = 2
@@ -201,7 +200,7 @@ def my_handler(client, message):
 
 
     # Process               DollorHiest Complete
-    if send_channel == "dolor_hiest" and need == 1:
+    if send_channel == -1001321827535 and need == 1:
         bot.download_media(file_name=img_name,message=message)
         print("hi")
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
@@ -247,7 +246,7 @@ def my_handler(client, message):
                            
      
     # pips30 Complete
-    elif send_channel == "pips30_c2p" and need == 1:
+    elif send_channel == -1001414997767 and need == 1:
         bot.download_media(file_name=img_name,message=message)
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
@@ -286,7 +285,7 @@ def my_handler(client, message):
             bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")  
     
     #getting fmfx
-    elif send_channel == "c2p_fmfx" and need == 1:
+    elif send_channel == -1001485507442 and need == 1:
         bot.download_media(file_name=img_name,message=message)
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
@@ -333,11 +332,11 @@ def my_handler(client, message):
             bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")  
         #bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
-    elif send_channel == "c2p_pro" and need == 2:
+    elif send_channel == -1001473518645 and need == 2:
         text = order+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom Professor"
         bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
             
-    elif send_channel == "pips15_c2p" and need == 1:
+    elif send_channel == -1001490464609 and need == 1:
         bot.download_media(file_name=img_name,message=message)
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
