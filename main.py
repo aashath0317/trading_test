@@ -24,7 +24,9 @@ def spawn_program_and_die(program, exit_code=0):
             subprocess.Popen(program)
             sys.exit(exit_code)
 
-bot = Client('pyrogram', api_id=3030128, api_hash="cfc3885f5d2cbdbc5f10e6a643de2711", bot_token="5066559573:AAHpW3kVR3yZEIzKPvMlDPkgxXaHSN_NDoo")
+string = "BQATU3qnBerqLB_hc1xeHyOTzq8MCrO8bGejw6TDOe1afbj-kkAVi2Q587ML0e3xcHqrLTSg8JJ-CJV0aY-Jtgd_QabCSVSD77d9tnoqrbsekejWxnh7Gb5ww_oW-06OMSTkn8VuwJbivZpCxgdGtJWl5vxAwObD3hnnQzQt19DyK-ZZ8UXDKJxWvvgzveyGVn0GihG1lFpP1xQm3f5bRrZ6oyJlIpcLY0XuRn_nwkZC4IwTAUr341Qkp5wy20w_D2uWb2LxyqA5HmnkL9Pdz6wGEM0DPRnOYh_uiMMT3BFzOskGUoKGJVrNYQilR8PsLINiTvKT92uvNLNVe4ekT_t-Uf7iDQA"
+
+bot = Client(string, api_id = 3221048,api_hash = '99c716130712c0381d936cf528b90ed0')
 
 channels = {-1001321827535: {'type': 'channel', 'trading': 'scalping', 'url': '@dollarheistofficial'},
             -1001414997767: {'type': 'channel', 'trading': 'scalping', 'url': '@PIPS30official'},
