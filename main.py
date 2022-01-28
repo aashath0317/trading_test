@@ -93,7 +93,7 @@ def my_handler(client, message):
                 msg = "Something wrong is this signal Order.. not triggered From DollorHiest"
                 bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
                 need = 0
-        except IndexError:
+        except:
             need = 0
 
  
