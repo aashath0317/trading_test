@@ -24,8 +24,7 @@ def spawn_program_and_die(program, exit_code=0):
             subprocess.Popen(program)
             sys.exit(exit_code)
 
-string = "BQCInqbhdnwj08_AVpjZdsnIVwPhmuvF7dEkiDkgZfxZygk9vtm9zbCwhFmDuobsK3KILjcHzN7u8atVy12nzkqHiAvLlniiwuE_1H9Jth8D8fvlWEUYnz3hEmX9udRn8gi6ao_7NcxZq0U1TJkeAgfCsAkwCbpYHudYKUKlSU8jjqa51zyFlg9xYJ6iAnkOwS6xtEr2jHOcC3IHzamNObaybSGRbs8F4_bLVTEDbpLqjd-EVirYp-T-oVpfKTTuh2Jyp7E38RFCOTbrlzs0WZLesl6WF44I-iyHEgmdmoW9_bDCsc-i4RK6O3f5qmQx5Hwz7UyBsEf1qSSYH2BVEqerS-cCEgA"
-
+string = "BQCtCiTZEOcE50X0ht6xsaXZFFQTKEFwARj1cz8FHS_KzKdhrXWENYI7-pZCI-vMPqv2ZEhsXoAPwpwRKMkRTzU6tZ6Hgr9Xw8DGGsfy1BeuK1XX3iuxXbakHD_iv8MZlT40hap6VDff16lk7GTvbPn851gtMRjrUCKEHt-8LLBSS8f7Qq-zh18qG8imp_RiBKJVJvujLuCAU2YSXsdNGJvF6Y5le4O3qpllxXjHJkGhbzgNNpkvRE8SsaLc8Cggl56Qdg-MQTrpIpGsS84ChgLNVxJ5-5cLu_nf0z2LfwoiS6Mdedf-G6LXbQF4_oE2jt5e5zbV0Za_vFBnCwFMlhdXS-cCEgA"
 bot = Client(string, api_id = 3030128,api_hash = 'cfc3885f5d2cbdbc5f10e6a643de2711')
 
 channels = {-1001574829007: {'type': 'channel', 'trading': 'scalping', 'url': '@dollarheistofficial'},
