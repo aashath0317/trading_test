@@ -28,7 +28,7 @@ string = "BQCInqbhdnwj08_AVpjZdsnIVwPhmuvF7dEkiDkgZfxZygk9vtm9zbCwhFmDuobsK3KILj
 
 bot = Client(string, api_id = 3030128,api_hash = 'cfc3885f5d2cbdbc5f10e6a643de2711')
 
-channels = {-1001321827535: {'type': 'channel', 'trading': 'scalping', 'url': '@dollarheistofficial'},
+channels = {-1001574829007: {'type': 'channel', 'trading': 'scalping', 'url': '@dollarheistofficial'},
             -1001414997767: {'type': 'channel', 'trading': 'scalping', 'url': '@PIPS30official'},
             -1001473518645: {'type': 'channel', 'trading': 'scalping', 'url': '@professoroff'},
             -1001485507442: {'type': 'channel', 'trading': 'scalping', 'url': '@fmfxofficial'},
@@ -65,7 +65,7 @@ def my_handler(client, message):
     chat_id = -1001787560665
     message = message
     send_channel = message.chat.id
-    if send_channel == -1001321827535:
+    if send_channel == -1001574829007:
             chn = "Dollor_hiest"
     elif send_channel == -1001414997767:
             chn = "pips30"
@@ -83,7 +83,7 @@ def my_handler(client, message):
     filetype_text = message.text
     need = 0                                           # GETTING TP ,SL, ORDER, Professor pair and setting working only signal
             
-    if send_channel == -1001414997767 and not filetype == None:
+    if send_channel == -1001574829007 and not filetype == None:
         msg = "working in pair on dollor_heist"
         bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML) 
         try:
@@ -145,7 +145,7 @@ def my_handler(client, message):
             need = 0
 
         
-    elif send_channel == -1001485507442 and not filetype == None:
+    elif send_channel == -1001528178854 and not filetype == None:
         msg = "working in pair on dollor_heist"
         bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML) 
         try:
@@ -227,7 +227,7 @@ def my_handler(client, message):
 
 
     # Process               DollorHiest Complete
-    if send_channel == -1001321827535 and need == 1:
+    if send_channel == -1001574829007 and need == 1:
         msg = "working in image on dollor_heist"
         bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML) 
         bot.download_media(file_name=img_name,message=message)
@@ -316,7 +316,7 @@ def my_handler(client, message):
             bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")  
     
     #getting fmfx
-    elif send_channel == -1001485507442 and need == 1:
+    elif send_channel == -1001528178854 and need == 1:
         msg = "working in pair on fmfx"
         bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML) 
         bot.download_media(file_name=img_name,message=message)
