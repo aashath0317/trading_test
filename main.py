@@ -65,13 +65,27 @@ def my_handler(client, message):
     chat_id = -1001787560665
     message = message
     send_channel = message.chat.id
-    msg = str(send_channel)
+    if send_channel == -1001321827535:
+            chn = "Dollor_hiest"
+    elif send_channel == -1001414997767:
+            chn = "pips30"
+    elif send_channel == -1001473518645:
+            chn = "Professor Channel"
+    elif send_channel == -1001485507442:
+            chn = "FMFX"
+    elif send_channel == -1001490464609:
+            chn = "m15 Pip"
+            
+    msg = str(send_channel)+"Messaging Recieved from "+chn
     bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
     pair = ""
     filetype = message.photo
     filetype_text = message.text
     need = 0                                           # GETTING TP ,SL, ORDER, Professor pair and setting working only signal
+            
     if send_channel == -1001414997767 and not filetype == None:
+        msg = "working in pair on dollor_heist"
+        bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML) 
         try:
             signal = message.caption.split("\n")
             print(signal)
@@ -101,6 +115,8 @@ def my_handler(client, message):
 
  
     elif send_channel == -1001414997767 and not filetype == None:
+        msg = "working in pair on pips30"
+        bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML) 
         try:
             signal = message.caption.split("\n")
             order = signal[0].split(" ")[0]
@@ -130,6 +146,8 @@ def my_handler(client, message):
 
         
     elif send_channel == -1001485507442 and not filetype == None:
+        msg = "working in pair on dollor_heist"
+        bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML) 
         try:
             img_name = "c2p_fmfx.jpg"
             text_file = "c2p_fmfx"
@@ -150,6 +168,8 @@ def my_handler(client, message):
             need = 0                
 
     elif send_channel == -1001490464609 and not filetype == None:
+        msg = "working in pair on m15"
+        bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML) 
         try:
             img_name = "pips15_c2p.jpg"
             text_file = "pips15_c2p"
@@ -178,6 +198,8 @@ def my_handler(client, message):
             need = 0
 
     elif send_channel == -1001473518645 and filetype == None:
+        msg = "working in pair on professor"
+        bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML) 
         try:
             signal = filetype_text.split("\n")
             need = 2
@@ -206,6 +228,8 @@ def my_handler(client, message):
 
     # Process               DollorHiest Complete
     if send_channel == -1001321827535 and need == 1:
+        msg = "working in image on dollor_heist"
+        bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML) 
         bot.download_media(file_name=img_name,message=message)
         print("hi")
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
@@ -252,6 +276,8 @@ def my_handler(client, message):
      
     # pips30 Complete
     elif send_channel == -1001414997767 and need == 1:
+        msg = "working in pair on pip30"
+        bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML) 
         bot.download_media(file_name=img_name,message=message)
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
@@ -291,6 +317,8 @@ def my_handler(client, message):
     
     #getting fmfx
     elif send_channel == -1001485507442 and need == 1:
+        msg = "working in pair on fmfx"
+        bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML) 
         bot.download_media(file_name=img_name,message=message)
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
@@ -342,6 +370,8 @@ def my_handler(client, message):
         bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
             
     elif send_channel == -1001490464609 and need == 1:
+        msg = "working in image on M15"
+        bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML) 
         bot.download_media(file_name=img_name,message=message)
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
