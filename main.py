@@ -24,9 +24,9 @@ def spawn_program_and_die(program, exit_code=0):
             subprocess.Popen(program)
             sys.exit(exit_code)
 
-string = "BQATU3qnBerqLB_hc1xeHyOTzq8MCrO8bGejw6TDOe1afbj-kkAVi2Q587ML0e3xcHqrLTSg8JJ-CJV0aY-Jtgd_QabCSVSD77d9tnoqrbsekejWxnh7Gb5ww_oW-06OMSTkn8VuwJbivZpCxgdGtJWl5vxAwObD3hnnQzQt19DyK-ZZ8UXDKJxWvvgzveyGVn0GihG1lFpP1xQm3f5bRrZ6oyJlIpcLY0XuRn_nwkZC4IwTAUr341Qkp5wy20w_D2uWb2LxyqA5HmnkL9Pdz6wGEM0DPRnOYh_uiMMT3BFzOskGUoKGJVrNYQilR8PsLINiTvKT92uvNLNVe4ekT_t-Uf7iDQA"
+string = "BQCInqbhdnwj08_AVpjZdsnIVwPhmuvF7dEkiDkgZfxZygk9vtm9zbCwhFmDuobsK3KILjcHzN7u8atVy12nzkqHiAvLlniiwuE_1H9Jth8D8fvlWEUYnz3hEmX9udRn8gi6ao_7NcxZq0U1TJkeAgfCsAkwCbpYHudYKUKlSU8jjqa51zyFlg9xYJ6iAnkOwS6xtEr2jHOcC3IHzamNObaybSGRbs8F4_bLVTEDbpLqjd-EVirYp-T-oVpfKTTuh2Jyp7E38RFCOTbrlzs0WZLesl6WF44I-iyHEgmdmoW9_bDCsc-i4RK6O3f5qmQx5Hwz7UyBsEf1qSSYH2BVEqerS-cCEgA"
 
-bot = Client(string, api_id = 3221048,api_hash = '99c716130712c0381d936cf528b90ed0')
+bot = Client(string, api_id = 3030128,api_hash = 'cfc3885f5d2cbdbc5f10e6a643de2711')
 
 channels = {-1001321827535: {'type': 'channel', 'trading': 'scalping', 'url': '@dollarheistofficial'},
             -1001414997767: {'type': 'channel', 'trading': 'scalping', 'url': '@PIPS30official'},
@@ -64,6 +64,8 @@ def my_handler(client, message):
     chat_id = -1001787560665
     message = message
     send_channel = message.chat.id
+    msg = str(send_channel)
+    bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
     pair = ""
     filetype = message.photo
     filetype_text = message.text
