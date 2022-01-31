@@ -32,7 +32,8 @@ channels = {-1001321827535: {'type': 'channel', 'trading': 'scalping', 'url': '@
             -1001414997767: {'type': 'channel', 'trading': 'scalping', 'url': '@PIPS30official'},
             -1001473518645: {'type': 'channel', 'trading': 'scalping', 'url': '@professoroff'},
             -1001485507442: {'type': 'channel', 'trading': 'scalping', 'url': '@fmfxofficial'},
-            -1001490464609: {'type': 'channel', 'trading': 'scalping', 'url': 'https://t.me/joinchat/AAAAAFjWr2HofJCa8C0k2w'}}  
+            -1001490464609: {'type': 'channel', 'trading': 'scalping', 'url': 'https://t.me/joinchat/AAAAAFjWr2HofJCa8C0k2w'},
+            -1001414997767: {'type': 'channel', 'trading': 'scalping', 'url': 'https://t.me/joinchat/AAAAAFjWr2HofJCa8C0k2w'}}  
 
 
  
