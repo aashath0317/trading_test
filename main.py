@@ -27,7 +27,7 @@ def spawn_program_and_die(program, exit_code=0):
 string = "BQCtCiTZEOcE50X0ht6xsaXZFFQTKEFwARj1cz8FHS_KzKdhrXWENYI7-pZCI-vMPqv2ZEhsXoAPwpwRKMkRTzU6tZ6Hgr9Xw8DGGsfy1BeuK1XX3iuxXbakHD_iv8MZlT40hap6VDff16lk7GTvbPn851gtMRjrUCKEHt-8LLBSS8f7Qq-zh18qG8imp_RiBKJVJvujLuCAU2YSXsdNGJvF6Y5le4O3qpllxXjHJkGhbzgNNpkvRE8SsaLc8Cggl56Qdg-MQTrpIpGsS84ChgLNVxJ5-5cLu_nf0z2LfwoiS6Mdedf-G6LXbQF4_oE2jt5e5zbV0Za_vFBnCwFMlhdXS-cCEgA"
 bot = Client(string, api_id = 3030128,api_hash = 'cfc3885f5d2cbdbc5f10e6a643de2711')
 
-channels = {-1001574829007: {'type': 'channel', 'trading': 'scalping', 'url': '@dollarheistofficial'},
+channels = {-1001745349435: {'type': 'channel', 'trading': 'scalping', 'url': '@dollarheistofficial'},
             -1001414997767: {'type': 'channel', 'trading': 'scalping', 'url': '@PIPS30official'},
             -1001473518645: {'type': 'channel', 'trading': 'scalping', 'url': '@professoroff'},
             -1001485507442: {'type': 'channel', 'trading': 'scalping', 'url': '@fmfxofficial'},
@@ -65,7 +65,7 @@ def my_handler(client, message):
     filetype_text = message.text
     need = 0                                           # GETTING TP ,SL, ORDER, Professor pair and setting working only signal
             
-    if send_channel == -1001574829007 and not filetype == None:   #dolor_heist
+    if send_channel == -1001574829007 or -1001745349435 and not filetype == None:   #dolor_heist
         try:
             signal = message.caption.split("\n")
             order = signal[0].split("@")[0].strip(" ")        
@@ -196,7 +196,7 @@ def my_handler(client, message):
 
 
     # Process               DollorHiest Complete
-    if send_channel == -1001574829007 and need == 1:
+    if send_channel == -1001574829007 or -1001745349435 and need == 1:
         bot.download_media(file_name=img_name,message=message)
         print("hi")
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
