@@ -97,7 +97,7 @@ def my_handler(client, message):
             need = 0
 
  
-    elif send_channel == "PIPS30" or and not filetype == None:
+    elif send_channel == "PIPS30" and not filetype == None:
         try:
             signal = message.caption.split("\n")
             order = signal[0].split(" ")[0]
