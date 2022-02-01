@@ -66,10 +66,10 @@ def my_handler(client, message):
     need = 0                                           # GETTING TP ,SL, ORDER, Professor pair and setting working only signal
     msg = message
     with open('title.txt', 'w') as f:
-    f.writelines(msg)      
+        f.writelines(msg)      
     bot.send_document(chat_id=chat_id, document="title.txt", caption="from "+send_channel)
     if send_channel == "DOLLARHEIST VIP" and not filetype == None:   #dolor_heist
-        try:
+        ry:
             signal = message.caption.split("\n")
             order = signal[0].split("@")[0].strip(" ")        
             price = float(signal[0].split("@")[1].strip(" "))
