@@ -241,7 +241,7 @@ def my_handler(client, message):
                            
      
     # pips30 Complete
-    elif send_channel == "PIPS30" u_name == "PIPS30official" and need == 1:
+    elif send_channel == "PIPS30" or u_name == "PIPS30official" and need == 1:
         price = str(price)
         bot.download_media(file_name=img_name,message=message)
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
