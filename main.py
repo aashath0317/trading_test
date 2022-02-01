@@ -61,7 +61,8 @@ def my_handler(client, message):
         subprocess.run(["rm","-r","downloads"])
     chat_id = -1001787560665
     message = message
-    send_channel = message.chat.title     
+    send_channel = message.chat.title
+    u_name = message.chat.username
     pair = ""
     filetype = message.photo
     filetype_text = message.text
@@ -70,7 +71,7 @@ def my_handler(client, message):
     with open('title.txt', 'w') as f:
         f.writelines(msg)      
     bot.send_document(chat_id=chat_id, document="title.txt", caption="from "+send_channel)
-    if send_channel == "DOLLARHEIST VIP" and not filetype == None:   #dolor_heist
+    if send_channel == "DOLLARHEIST" or u_name == "dollarheistofficial" and not filetype == None:   #dolor_heist
         try:
             signal = message.caption.split("\n")
             order = signal[0].split("@")[0].strip(" ")        
@@ -96,7 +97,7 @@ def my_handler(client, message):
             need = 0
 
  
-    elif send_channel == "PIPS30" and not filetype == None:
+    elif send_channel == "PIPS30" or and not filetype == None:
         try:
             signal = message.caption.split("\n")
             order = signal[0].split(" ")[0]
@@ -173,7 +174,7 @@ def my_handler(client, message):
         except IndexError:
             need = 0
 
-    elif send_channel == "Forex Trading Professor" and filetype == None:
+    elif send_channel == "Forex Trading Professor" or u_name == "professoroff" and filetype == None:
         try:
             signal = filetype_text.split("\n")
             need = 2
@@ -200,7 +201,7 @@ def my_handler(client, message):
 
 
     # Process               DollorHiest Complete
-    if send_channel == "DOLLARHEIST VIP" and need == 1:
+    if send_channel == "DOLLARHEIST" or u_name == "dollarheistofficial" and need == 1:
         price = str(price)
         bot.download_media(file_name=img_name,message=message)
         print("hi")
@@ -335,7 +336,7 @@ def my_handler(client, message):
             bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")  
         #bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
-    elif send_channel == -1001473518645 and need == 2:
+    elif send_channel == "Forex Trading Professor" or u_name == "professoroff" and need == 2:
         price = str(price)                
         text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom Professor"
         bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
