@@ -195,9 +195,9 @@ def my_handler(client, message):
             need =0
 
 
-    price = str(price)
     # Process               DollorHiest Complete
     if send_channel == "DOLLARHEIST VIP" and need == 1:
+        price = str(price)
         bot.download_media(file_name=img_name,message=message)
         print("hi")
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
@@ -244,6 +244,7 @@ def my_handler(client, message):
      
     # pips30 Complete
     elif send_channel == "PIPS30" and need == 1:
+        price = str(price)
         bot.download_media(file_name=img_name,message=message)
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
@@ -283,6 +284,7 @@ def my_handler(client, message):
     
     #getting fmfx
     elif send_channel == -1001528178854 and need == 1:
+        price = str(price)    
         bot.download_media(file_name=img_name,message=message)
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
@@ -330,10 +332,12 @@ def my_handler(client, message):
         #bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
     elif send_channel == -1001473518645 and need == 2:
+        price = str(price)                
         text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom Professor"
         bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
             
     elif send_channel == -1001490464609 and need == 1:
+        price = str(price)    
         bot.download_media(file_name=img_name,message=message)
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
