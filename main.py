@@ -195,7 +195,7 @@ def my_handler(client, message):
             need =0
 
 
-
+    price = str(price)
     # Process               DollorHiest Complete
     if send_channel == "DOLLARHEIST VIP" and need == 1:
         bot.download_media(file_name=img_name,message=message)
