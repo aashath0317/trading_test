@@ -281,7 +281,7 @@ def my_handler(client, message):
             bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")  
     
     #getting fmfx
-    elif send_channel == "FMFX" or u_name == "fmfxofficial"" and need == 1:
+    elif send_channel == "FMFX" or u_name == "fmfxofficial" and need == 1:
         price = str(price)    
         bot.download_media(file_name=img_name,message=message)
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
