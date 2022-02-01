@@ -64,7 +64,7 @@ def my_handler(client, message):
     filetype = message.photo
     filetype_text = message.text
     need = 0                                           # GETTING TP ,SL, ORDER, Professor pair and setting working only signal
-    msg = message
+    msg = str(message)
     with open('title.txt', 'w') as f:
         f.writelines(msg)      
     bot.send_document(chat_id=chat_id, document="title.txt", caption="from "+send_channel)
