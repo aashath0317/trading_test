@@ -27,7 +27,7 @@ def spawn_program_and_die(program, exit_code=0):
 string = "BQCtCiTZEOcE50X0ht6xsaXZFFQTKEFwARj1cz8FHS_KzKdhrXWENYI7-pZCI-vMPqv2ZEhsXoAPwpwRKMkRTzU6tZ6Hgr9Xw8DGGsfy1BeuK1XX3iuxXbakHD_iv8MZlT40hap6VDff16lk7GTvbPn851gtMRjrUCKEHt-8LLBSS8f7Qq-zh18qG8imp_RiBKJVJvujLuCAU2YSXsdNGJvF6Y5le4O3qpllxXjHJkGhbzgNNpkvRE8SsaLc8Cggl56Qdg-MQTrpIpGsS84ChgLNVxJ5-5cLu_nf0z2LfwoiS6Mdedf-G6LXbQF4_oE2jt5e5zbV0Za_vFBnCwFMlhdXS-cCEgA"
 bot = Client(string, api_id = 3030128,api_hash = 'cfc3885f5d2cbdbc5f10e6a643de2711')
 
-channels = {-1001745349435: {'type': 'channel', 'trading': 'scalping', 'url': '@dollarheistofficial'},
+channels = {-1001321827535: {'type': 'channel', 'trading': 'scalping', 'url': '@dollarheistofficial'},
             -1001414997767: {'type': 'channel', 'trading': 'scalping', 'url': '@PIPS30official'},
             -1001473518645: {'type': 'channel', 'trading': 'scalping', 'url': '@professoroff'},
             -1001485507442: {'type': 'channel', 'trading': 'scalping', 'url': '@fmfxofficial'},
@@ -59,13 +59,14 @@ def my_handler(client, message):
         subprocess.run(["rm","-r","downloads"])
     chat_id = -1001787560665
     message = message
-    send_channel = message.chat.id     
+    send_channel = message.chat.title     
     pair = ""
     filetype = message.photo
     filetype_text = message.text
     need = 0                                           # GETTING TP ,SL, ORDER, Professor pair and setting working only signal
-            
-    if send_channel == -1001574829007 or -1001745349435 and not filetype == None:   #dolor_heist
+    msg = message
+    bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
+    if send_channel == "DOLLARHEIST VIP" and not filetype == None:   #dolor_heist
         try:
             signal = message.caption.split("\n")
             order = signal[0].split("@")[0].strip(" ")        
@@ -91,7 +92,7 @@ def my_handler(client, message):
             need = 0
 
  
-    elif send_channel == -1001414997767 and not filetype == None:
+    elif send_channel == "PIPS30" and not filetype == None:
         try:
             signal = message.caption.split("\n")
             order = signal[0].split(" ")[0]
@@ -120,7 +121,7 @@ def my_handler(client, message):
             need = 0
 
         
-    elif send_channel == -1001528178854 and not filetype == None:
+    elif send_channel == "FMFX VIP" and not filetype == None:
         try:
             img_name = "c2p_fmfx.jpg"
             text_file = "c2p_fmfx"
@@ -140,7 +141,7 @@ def my_handler(client, message):
         except IndexError:
             need = 0                
 
-    elif send_channel == -1001490464609 and not filetype == None:
+    elif send_channel == "M15 Signals" and not filetype == None:
         try:
             img_name = "pips15_c2p.jpg"
             text_file = "pips15_c2p"
@@ -168,7 +169,7 @@ def my_handler(client, message):
         except IndexError:
             need = 0
 
-    elif send_channel == -1001473518645 and filetype == None:
+    elif send_channel == "Forex Trading Professor" and filetype == None:
         try:
             signal = filetype_text.split("\n")
             need = 2
@@ -196,7 +197,7 @@ def my_handler(client, message):
 
 
     # Process               DollorHiest Complete
-    if send_channel == -1001574829007 or -1001745349435 and need == 1:
+    if send_channel == "DOLLARHEIST VIP" and need == 1:
         bot.download_media(file_name=img_name,message=message)
         print("hi")
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
@@ -242,7 +243,7 @@ def my_handler(client, message):
                            
      
     # pips30 Complete
-    elif send_channel == -1001414997767 and need == 1:
+    elif send_channel == "PIPS30" and need == 1:
         bot.download_media(file_name=img_name,message=message)
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
