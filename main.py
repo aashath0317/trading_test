@@ -48,7 +48,7 @@ def update(client, message):
                         
                      
 @bot.on_message(filters.channel)              #ERROR HANDLING
-def my_handler(client, message):
+def my_handler(client, message):        
     try:
         os.mkdir("downloads")
     except FileExistsError:
@@ -65,7 +65,9 @@ def my_handler(client, message):
     filetype_text = message.text
     need = 0                                           # GETTING TP ,SL, ORDER, Professor pair and setting working only signal
     msg = message
-    bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
+    with open('title.txt', 'w') as f:
+    f.writelines(msg)      
+    bot.send_document(chat_id=chat_id, document="title.txt", caption="from "+send_channel)
     if send_channel == "DOLLARHEIST VIP" and not filetype == None:   #dolor_heist
         try:
             signal = message.caption.split("\n")
