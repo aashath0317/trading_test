@@ -169,7 +169,7 @@ def my_handler(client, message):
         except IndexError:
             need = 0
 
-    elif send_channel == "Forex Trading Professor" or u_name == "professoroff" and filetype == None:
+    elif send_channel == "Forex Trading Professor" or u_name == "professoroff" and filetype == None and not filetype_text == None:
         try:
             signal = filetype_text.split("\n")
             need = 2
@@ -191,7 +191,7 @@ def my_handler(client, message):
                 msg = "Something wrong is this signal Order.. not triggered From Professor"
                 bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
                 need = 0
-        except IndexError:
+        except IndexError or AttributeError:
             need =0
 
 
@@ -330,7 +330,11 @@ def my_handler(client, message):
         elif pair == ['FMFX\n', '\n', 'a EUR\n', '\n', '     \n', '\n', '|\n', 'Japanese yen\n', '\n', '@fmfxofficial #FMFXofficial #FULLMARGIN\n', '\x0c']:
             pair = "EURJPY"
             text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
-            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)                        
+            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
+        elif pair ==  ['ze\n', '\n', 'e\n', 'os\n', '2\n', 'a\n', '=\n', 'Pe\n', '\n', ' \n', '\n', '#FULLMARGIN\n', '\n', '#FMPFXofficial\n', '\n', '@fmfxofficial\n', '\x0c']:
+            pair = "XAUUSD:
+            text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
+            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML) 
         else:
             caption = f'I cant resolve this photo From {send_channel} \n\n'
             photo = "downloads/"+img_name
