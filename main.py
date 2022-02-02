@@ -55,9 +55,10 @@ def my_handler(client, message):
     chat_id = -1001787560665
     message = message
     send_channel = message.chat.title
+    photo_uid = message.chat.big_photo_unique_id
     u_name = message.chat.username
     pair = ""
-    filetype = message.photo
+    filetype = message.photo.
     filetype_text = message.text
     need = 0 
     '''                                      # GETTING TP ,SL, ORDER, Professor pair and setting working only signal
@@ -331,7 +332,7 @@ def my_handler(client, message):
             pair = "EURJPY"
             text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-        elif pair ==  ['ze\n', '\n', 'e\n', 'os\n', '2\n', 'a\n', '=\n', 'Pe\n', '\n', ' \n', '\n', '#FULLMARGIN\n', '\n', '#FMPFXofficial\n', '\n', '@fmfxofficial\n', '\x0c']:
+        elif pair ==  ['ze\n', '\n', 'e\n', 'os\n', '2\n', 'a\n', '=\n', 'Pe\n', '\n', ' \n', '\n', '#FULLMARGIN\n', '\n', '#FMPFXofficial\n', '\n', '@fmfxofficial\n', '\x0c'] or photo_uid == "AgAD3KsxG5YAARFV":
             pair = "XAUUSD:
             text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML) 
