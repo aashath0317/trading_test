@@ -58,7 +58,7 @@ def my_handler(client, message):
     photo_uid = message.chat.big_photo_unique_id
     u_name = message.chat.username
     pair = ""
-    filetype = message.photo.
+    filetype = message.photo
     filetype_text = message.text
     need = 0 
     '''                                      # GETTING TP ,SL, ORDER, Professor pair and setting working only signal
