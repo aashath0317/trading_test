@@ -55,7 +55,7 @@ def my_handler(client, message):
     chat_id = -1001787560665
     message = message
     send_channel = message.chat.title
-    photo_uid = message.chat.big_photo_unique_id
+    photo_uid = message.chat.photo.big_photo_unique_id
     u_name = message.chat.username
     pair = ""
     filetype = message.photo
