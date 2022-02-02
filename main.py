@@ -67,7 +67,7 @@ def my_handler(client, message):
     bot.send_document(chat_id=chat_id, document="title.txt", caption="from "+send_channel)
     '''
     if send_channel == "DOLLARHEIST" or u_name == "dollarheistofficial" and not filetype == None:   #dolor_heist
-        try:
+        try
             signal = message.caption.split("\n")
             order = signal[0].split("@")[0].strip(" ")        
             price = float(signal[0].split("@")[1].strip(" "))
@@ -235,7 +235,11 @@ def my_handler(client, message):
                 photo = "downloads/"+img_name
                 caption += f'Uniq string is:\n( {str(pair)} )'
                 bot.send_photo(chat_id=chat_id, caption=caption, photo=photo)
-                bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")  
+                bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")
+                msg = str(message)
+                with open('title.txt', 'w') as f:
+                    f.writelines(msg)      
+                bot.send_document(chat_id=chat_id, document="title.txt", caption="from "+send_channel)
         except:
             msg = "What is this i don't know about this From DollorHeist\n\n"
             msg += text
@@ -250,7 +254,7 @@ def my_handler(client, message):
         text= text_file+".txt"
         f = open(text,'r')
         pair = f.readlines()
-        if pair == ['#PIPS30\n', '\n', 'a\n', 'a\n', 're}\n', 'oO\n', '\n', ' \n', '\n', 'AMERICAN DOLLAR\n', '\n', 'Fe\n', '\n', "PIPS'\n", '\x0c']:
+        if pair == ['#PIPS30\n', '\n', 'a\n', 'a\n', 're}\n', 'oO\n', '\n', ' \n', '\n', 'AMERICAN DOLLAR\n', '\n', 'Fe\n', '\n', "PIPS'\n", '\x0c'] or ['#PIPS3O0\n', '\n', 'fay\n', 'a\n', 'ce}\n', 'oO\n', '\n', ' \n', '\n', 'AMERICAN DOLLAR\n', '\n', 'Fe\n', '\n', "PIPS'\n", '\x0c']:
             pair = "XAUUSD"
             text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom PIPS 30"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
@@ -281,6 +285,10 @@ def my_handler(client, message):
             caption += f'Uniq string is:\n( {str(pair)} )'
             bot.send_photo(chat_id=chat_id, caption=caption, photo=photo)
             bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")  
+            msg = str(message)
+            with open('title.txt', 'w') as f:
+                f.writelines(msg)      
+            bot.send_document(chat_id=chat_id, document="title.txt", caption="from "+send_channel)
     
     #getting fmfx
     elif send_channel == "FMFX" or u_name == "fmfxofficial" and need == 1:
@@ -328,7 +336,11 @@ def my_handler(client, message):
             photo = "downloads/"+img_name
             caption += f'Uniq string is:\n( {str(pair)} )'
             bot.send_photo(chat_id=chat_id, caption=caption, photo=photo)
-            bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")  
+            bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")
+            msg = str(message)
+            with open('title.txt', 'w') as f:
+                f.writelines(msg)      
+            bot.send_document(chat_id=chat_id, document="title.txt", caption="from "+send_channel)
         #bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
     elif send_channel == "Forex Trading Professor" or u_name == "professoroff" and need == 2:
@@ -394,7 +406,11 @@ def my_handler(client, message):
             photo = "downloads/"+img_name
             caption += f'Uniq string is:\n( {str(pair)} )'
             bot.send_photo(chat_id=chat_id, caption=caption, photo=photo)
-            bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file") 
+            bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")
+            msg = str(message)
+            with open('title.txt', 'w') as f:
+                f.writelines(msg)      
+            bot.send_document(chat_id=chat_id, document="title.txt", caption="from "+send_channel)
     else:
         pass
 
