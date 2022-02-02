@@ -67,7 +67,7 @@ def my_handler(client, message):
     bot.send_document(chat_id=chat_id, document="title.txt", caption="from "+send_channel)
     '''
     if send_channel == "DOLLARHEIST" or u_name == "dollarheistofficial" and not filetype == None:   #dolor_heist
-        try
+        try:
             signal = message.caption.split("\n")
             order = signal[0].split("@")[0].strip(" ")        
             price = float(signal[0].split("@")[1].strip(" "))
