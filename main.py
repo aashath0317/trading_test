@@ -75,12 +75,8 @@ def my_handler(client, message):
             tp = float(signal[2].split(" ")[2])
             try:
                 sl = float(signal[5].split(" ")[4])
-                print(sl)
             except IndexError:
                 sl = float(signal[5].split(" ")[2])
-                print(sl)  
-            img_name = "dolor_heist.jpg"
-            text_file = "dolor_hiest_text"
             if price < tp and price > sl and order == "BUY NOW":
                 need = 1
             elif price > tp and price < sl and order == "SELL NOW":
@@ -91,6 +87,7 @@ def my_handler(client, message):
                 need = 0
         except:
             need = 0
+            
 
  
     elif send_channel == "PIPS30" or u_name == "PIPS30official" and not filetype == None:
@@ -198,9 +195,9 @@ def my_handler(client, message):
 
     # Process               DollorHiest Complete
     if send_channel == "DOLLARHEIST" or u_name == "dollarheistofficial" and need == 1:
-        price = str(price)
+        img_name = "dolor_heist.jpg"
+        text_file = "dolor_hiest_text"                
         bot.download_media(file_name=img_name,message=message)
-        print("hi")
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
         f = open(text,'r')
