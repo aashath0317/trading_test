@@ -118,7 +118,7 @@ def my_handler(client, message):
                 msg = "Something wrong is this signal Order.. not triggered From PIPS30"
                 bot.send_message(chat_id=m, text=msg, parse_mode=telegram.ParseMode.HTML)
                 need = 0
-        except IndexError:
+        except IndexError or ValueError:
             need = 0
 
         
@@ -139,7 +139,7 @@ def my_handler(client, message):
                 msg = "Something wrong is this signal Order.. not triggered From FMFX"
                 bot.send_message(chat_id=m, text=msg, parse_mode=telegram.ParseMode.HTML)
                 need = 0
-        except IndexError:
+        except IndexError or ValueError:
             need = 0                
 
     elif send_channel == "M15 Signals" and not filetype == None:
@@ -167,7 +167,7 @@ def my_handler(client, message):
                 msg = "Something wrong is this signal Order.. not triggered From M15"
                 bot.send_message(chat_id=m, text=msg, parse_mode=telegram.ParseMode.HTML)
                 need = 0
-        except IndexError:
+        except IndexError or ValueError:
             need = 0
 
     elif send_channel == "Forex Trading Professor" or u_name == "professoroff" and filetype == None and not filetype_text == None:
