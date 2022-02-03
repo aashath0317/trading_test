@@ -225,7 +225,8 @@ def my_handler(client, message):
              pair = "GBPAUD"
              text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
              bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-        elif pair == [' \n', '\n', '|\n', ':\n', ',- FE\n', '_~ ££\n', '\n', 'New Zealand Dollar American Dollar\n', '\n', 'a\n', 'ST OAR)\n', 'Bice\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:              pair = "NZDUSD"
+        elif pair == [' \n', '\n', '|\n', ':\n', ',- FE\n', '_~ ££\n', '\n', 'New Zealand Dollar American Dollar\n', '\n', 'a\n', 'ST OAR)\n', 'Bice\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:      
+             pair = "NZDUSD"
              text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
              bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
         else:
