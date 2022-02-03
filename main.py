@@ -58,6 +58,7 @@ def my_handler(client, message):
     photo_uid = message.chat.photo.big_photo_unique_id
     u_name = message.chat.username
     pair = ""
+    m = 1375658509
     filetype = message.photo
     filetype_text = message.text
     need = 0 
@@ -69,6 +70,8 @@ def my_handler(client, message):
     '''
     if send_channel == "DOLLARHEIST" or u_name == "dollarheistofficial" and not filetype == None:   #dolor_heist
         try:
+            img_name = "dolor_heist.jpg"
+            text_file = "dolor_hiest_text"  
             signal = message.caption.split("\n")
             order = signal[0].split("@")[0].strip(" ")        
             price = float(signal[0].split("@")[1].strip(" "))
@@ -83,9 +86,9 @@ def my_handler(client, message):
                 need = 1
             else:
                 msg = "Something wrong is this signal Order.. not triggered From DollorHiest"
-                bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
+                bot.send_message(chat_id=m, text=msg, parse_mode=telegram.ParseMode.HTML)
                 need = 0
-        except :
+        except IndexError:
             need = 0
             
 
@@ -103,7 +106,7 @@ def my_handler(client, message):
                 order = "SELL NOW"
             else:
                 msg = "order not tiggered Reason: Unable resolve order type"
-                bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
+                bot.send_message(chat_id=m, text=msg, parse_mode=telegram.ParseMode.HTML)
             tp = float(signal[2].split(" ")[1])
             sl = float(signal[5].split(" ")[2])
 
@@ -113,7 +116,7 @@ def my_handler(client, message):
                 need = 1
             else:
                 msg = "Something wrong is this signal Order.. not triggered From PIPS30"
-                bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
+                bot.send_message(chat_id=m, text=msg, parse_mode=telegram.ParseMode.HTML)
                 need = 0
         except IndexError:
             need = 0
@@ -134,7 +137,7 @@ def my_handler(client, message):
                 need = 1
             else:
                 msg = "Something wrong is this signal Order.. not triggered From FMFX"
-                bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
+                bot.send_message(chat_id=m, text=msg, parse_mode=telegram.ParseMode.HTML)
                 need = 0
         except IndexError:
             need = 0                
@@ -152,7 +155,7 @@ def my_handler(client, message):
                 order = "SELL NOW"
             else:
                 msg = "Something wrong is this signal Order.. unable to resolve Order type not triggered From M15"
-                bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
+                bot.send_message(chat_id=m, text=msg, parse_mode=telegram.ParseMode.HTML)
                 need = 0
             tp = float(signal[2].split(" ")[1])
             sl = float(signal[5].split(" ")[1])            
@@ -162,7 +165,7 @@ def my_handler(client, message):
                 need = 1
             else:
                 msg = "Something wrong is this signal Order.. not triggered From M15"
-                bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
+                bot.send_message(chat_id=m, text=msg, parse_mode=telegram.ParseMode.HTML)
                 need = 0
         except IndexError:
             need = 0
@@ -187,7 +190,7 @@ def my_handler(client, message):
                 need = 2
             else:
                 msg = "Something wrong is this signal Order.. not triggered From Professor"
-                bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
+                bot.send_message(chat_id=m, text=msg, parse_mode=telegram.ParseMode.HTML)
                 need = 0
         except IndexError or AttributeError:
             need =0
@@ -195,53 +198,49 @@ def my_handler(client, message):
 
     # Process               DollorHiest Complete
     if send_channel == "DOLLARHEIST" or u_name == "dollarheistofficial" and need == 1:
-        img_name = "dolor_heist.jpg"
-        text_file = "dolor_hiest_text"                
+        price = str(price)
         bot.download_media(file_name=img_name,message=message)
         subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
         text= text_file+".txt"
         f = open(text,'r')
         pair = f.readlines()        
-        try:                          # CHECKING PAIR IN DOLLOR_HIEST
-            if pair == ['m2\n', 'iN\n', '\n', ' \n', '\n', 'Satie eye lites Japanese Yen\n', 'Ora\n', '@DollarHeistOfficial #DollarHeist WEIST\n', '\x0c']:
-                pair = "GBPJPY"
-                text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
-                bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-            elif pair == [' \n', '\x0c']:
-                pair = "EURAUD"
-                text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
-                bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-            elif pair == [' \n', '\n', 'Australian Dollar American Dollar\n', '\n', 'a\n', 'ST OAR)\n', 'Bice\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:
-                pair = "AUDUSD"
-                text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
-                bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-            elif pair == [' \n', '\n', 'Euro Japanese Yen\n', '\n', 'ee ea\n', 'OLLA\n', 'SC a\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:
-                pair = "EURJPY"
-                text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
-                bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-            elif pair == [' \n', '\n', '2\n', 'q\n', '\n', 'Satie eye lites Australian Dollar\n', 'Sg\n', '@DollarHeistOfficial #DollarHeist Eh y\n', '\x0c']:
-                pair = "GBPAUD"
-                text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
-                bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-            elif pair == [' \n', '\n', '|\n', ':\n', ',- FE\n', '_~ ££\n', '\n', 'New Zealand Dollar American Dollar\n', '\n', 'a\n', 'ST OAR)\n', 'Bice\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:
-                pair = "NZDUSD"
-                text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
-                bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-            else:
-                print(pair)
-                caption = f'I cant resolve this photo From {send_channel} \n\n'
-                photo = "downloads/"+img_name
-                caption += f'Uniq string is:\n( {str(pair)} )'
-                bot.send_photo(chat_id=chat_id, caption=caption, photo=photo)
-                bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")
-                msg = str(message)
-                with open('title.txt', 'w') as f:
+                                  # CHECKING PAIR IN DOLLOR_HIEST
+        if pair == ['m2\n', 'iN\n', '\n', ' \n', '\n', 'Satie eye lites Japanese Yen\n', 'Ora\n', '@DollarHeistOfficial #DollarHeist WEIST\n', '\x0c']:
+             pair = "GBPJPY"
+             text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
+             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
+        elif pair == [' \n', '\x0c']:
+             pair = "EURAUD"
+             text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
+             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
+        elif pair == [' \n', '\n', 'Australian Dollar American Dollar\n', '\n', 'a\n', 'ST OAR)\n', 'Bice\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:
+             pair = "AUDUSD"
+             text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
+             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
+        elif pair == [' \n', '\n', 'Euro Japanese Yen\n', '\n', 'ee ea\n', 'OLLA\n', 'SC a\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:
+             pair = "EURJPY"
+             text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
+             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
+        elif pair == [' \n', '\n', '2\n', 'q\n', '\n', 'Satie eye lites Australian Dollar\n', 'Sg\n', '@DollarHeistOfficial #DollarHeist Eh y\n', '\x0c']:
+             pair = "GBPAUD"
+             text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
+             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
+        elif pair == [' \n', '\n', '|\n', ':\n', ',- FE\n', '_~ ££\n', '\n', 'New Zealand Dollar American Dollar\n', '\n', 'a\n', 'ST OAR)\n', 'Bice\n', '\n', '@DollarHeistOfficial #DollarHeist\n', '\x0c']:              pair = "NZDUSD"
+             text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom DollorHiest"
+             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
+        else:
+            caption = f'I cant resolve this photo From {send_channel} \n\n'
+            photo = "downloads/"+img_name
+            caption += f'Uniq string is:\n( {str(pair)} )'
+            bot.send_photo(chat_id=m, caption=caption, photo=photo)
+            bot.send_document(chat_id=m, document=text_file+".txt", caption="This is File Uniq string file")
+            msg = str(message)
+            with open('title.txt', 'w') as f:
                     f.writelines(msg)      
-                bot.send_document(chat_id=chat_id, document="title.txt", caption="from "+send_channel)
-        except:
+            bot.send_document(chat_id=m, document="title.txt", caption="from "+send_channel)
             msg = "What is this i don't know about this From DollorHeist\n\n"
             msg += text
-            bot.send_message(chat_id=chat_id, text=msg, parse_mode=telegram.ParseMode.HTML)
+            bot.send_message(chat_id=m, text=msg, parse_mode=telegram.ParseMode.HTML)
                            
      
     # pips30 Complete
@@ -281,12 +280,12 @@ def my_handler(client, message):
             caption = f'I cant resolve this photo From {send_channel} \n\n'
             photo = "downloads/"+img_name
             caption += f'Uniq string is:\n( {str(pair)} )'
-            bot.send_photo(chat_id=chat_id, caption=caption, photo=photo)
-            bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")  
+            bot.send_photo(chat_id=m, caption=caption, photo=photo)
+            bot.send_document(chat_id=m, document=text_file+".txt", caption="This is File Uniq string file")  
             msg = str(message)
             with open('title.txt', 'w') as f:
                 f.writelines(msg)      
-            bot.send_document(chat_id=chat_id, document="title.txt", caption="from "+send_channel)
+            bot.send_document(chat_id=m, document="title.txt", caption="from "+send_channel)
     
     #getting fmfx
     elif send_channel == "FMFX" or u_name == "fmfxofficial" and need == 1:
@@ -337,12 +336,12 @@ def my_handler(client, message):
             caption = f'I cant resolve this photo From {send_channel} \n\n'
             photo = "downloads/"+img_name
             caption += f'Uniq string is:\n( {str(pair)} )'
-            bot.send_photo(chat_id=chat_id, caption=caption, photo=photo)
-            bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")
+            bot.send_photo(chat_id=m, caption=caption, photo=photo)
+            bot.send_document(chat_id=m, document=text_file+".txt", caption="This is File Uniq string file")
             msg = str(message)
             with open('title.txt', 'w') as f:
                 f.writelines(msg)      
-            bot.send_document(chat_id=chat_id, document="title.txt", caption="from "+send_channel)
+            bot.send_document(chat_id=m, document="title.txt", caption="from "+send_channel)
         #bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
 
     elif send_channel == "Forex Trading Professor" or u_name == "professoroff" and need == 2:
@@ -407,12 +406,12 @@ def my_handler(client, message):
             caption = f'I cant resolve this photo From {send_channel} \n\n'
             photo = "downloads/"+img_name
             caption += f'Uniq string is:\n( {str(pair)} )'
-            bot.send_photo(chat_id=chat_id, caption=caption, photo=photo)
-            bot.send_document(chat_id=chat_id, document=text_file+".txt", caption="This is File Uniq string file")
+            bot.send_photo(chat_id=m, caption=caption, photo=photo)
+            bot.send_document(chat_id=m, document=text_file+".txt", caption="This is File Uniq string file")
             msg = str(message)
             with open('title.txt', 'w') as f:
                 f.writelines(msg)      
-            bot.send_document(chat_id=chat_id, document="title.txt", caption="from "+send_channel)
+            bot.send_document(chat_id=m, document="title.txt", caption="from "+send_channel)
     else:
         pass
 
