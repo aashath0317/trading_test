@@ -329,7 +329,7 @@ def my_handler(client, message):
             pair = "EURJPY"
             text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-        elif pair ==  ['ze\n', '\n', 'e\n', 'os\n', '2\n', 'a\n', '=\n', 'Pe\n', '\n', ' \n', '\n', '#FULLMARGIN\n', '\n', '#FMPFXofficial\n', '\n', '@fmfxofficial\n', '\x0c'] or photo_uid == "AgAD3KsxG5YAARFV":
+        elif pair ==  ['ze\n', '\n', 'e\n', 'os\n', '2\n', 'a\n', '=\n', 'Pe\n', '\n', ' \n', '\n', '#FULLMARGIN\n', '\n', '#FMPFXofficial\n', '\n', '@fmfxofficial\n', '\x0c']:
             pair = "XAUUSD"
             text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
             bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML) 
