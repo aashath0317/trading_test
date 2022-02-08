@@ -75,7 +75,7 @@ def my_handler(client, message):
             price_s = str(signal[0].split("@")[1].strip(" "))
             tp_s = str(signal[2].split(" ")[2])
             mssg = signal_s+"\n"+order_s+"\n"+price_s+"\n"+tp_s
-            bot.send_message(chat_id=m, text=msg, parse_mode=telegram.ParseMode.HTML)
+            bot.send_message(chat_id=m, text=mssg, parse_mode=telegram.ParseMode.HTML)
             img_name = "dolor_heist.jpg"
             text_file = "dolor_hiest_text"  
             signal = message.caption.split("\n")
