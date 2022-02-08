@@ -407,7 +407,11 @@ def my_handler(client, message):
         elif pair == ['ivi Ea\n', '\n', 'CAD / CHF\n', '\x0c']:
             pair = "CADCHF"
             text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
-            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)            
+            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML) 
+        elif pair ==  ['AUD / CAD\n', '\n', ' \n', '\x0c']:
+            pair = "AUDCAD"
+            text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom M15"
+            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML) 
         else:
             print(pair)
             caption = f'I cant resolve this photo From {send_channel} \n\n'
