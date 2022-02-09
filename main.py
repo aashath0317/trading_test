@@ -70,6 +70,8 @@ def my_handler(client, message):
     '''
     if send_channel == "DOLLARHEIST" or u_name == "dollarheistofficial" and not filetype == None:   #dolor_heist
         try:
+            mssg = message.caption
+            bot.send_message(chat_id=m, text=mssg, parse_mode=telegram.ParseMode.HTML)
             signal_s = message.caption.split("\n")
             order_s = signal[0].split("@")[0].strip(" ")        
             price_s = str(signal[0].split("@")[1].strip(" "))
@@ -127,7 +129,7 @@ def my_handler(client, message):
         except IndexError or ValueError:
             need = 0
 
-        
+   '''     
     elif send_channel == "FMFX" or u_name == "fmfxofficial" and not filetype == None:
         try:
             img_name = "c2p_fmfx.jpg"
@@ -147,7 +149,7 @@ def my_handler(client, message):
                 need = 0
         except IndexError or ValueError:
             need = 0                
-
+'''
     elif send_channel == "M15 Signals" and not filetype == None:
         try:
             img_name = "pips15_c2p.jpg"
@@ -293,7 +295,7 @@ def my_handler(client, message):
             with open('title.txt', 'w') as f:
                 f.writelines(msg)      
             bot.send_document(chat_id=m, document="title.txt", caption="from "+send_channel)
-    
+    '''
     #getting fmfx
     elif send_channel == "FMFX" or u_name == "fmfxofficial" and need == 1:
         price = str(price)    
@@ -350,7 +352,7 @@ def my_handler(client, message):
                 f.writelines(msg)      
             bot.send_document(chat_id=m, document="title.txt", caption="from "+send_channel)
         #bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-
+'''
     elif send_channel == "Forex Trading Professor" or u_name == "professoroff" and need == 2:
         price = str(price)                
         text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom Professor"
