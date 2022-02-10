@@ -295,7 +295,7 @@ def my_handler(client, message):
             with open('title.txt', 'w') as f:
                 f.writelines(msg)      
             bot.send_document(chat_id=m, document="title.txt", caption="from "+send_channel)
-    '''
+'''
     #getting fmfx
     elif send_channel == "FMFX" or u_name == "fmfxofficial" and need == 1:
         price = str(price)    
