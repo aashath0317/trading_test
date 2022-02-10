@@ -129,27 +129,6 @@ def my_handler(client, message):
         except IndexError or ValueError:
             need = 0
 
-    '''     
-    elif send_channel == "FMFX" or u_name == "fmfxofficial" and not filetype == None:
-        try:
-            img_name = "c2p_fmfx.jpg"
-            text_file = "c2p_fmfx"
-            signal = message.caption.split("\n")
-            order = signal[0].split("@")[0].strip(" ")
-            price = float(signal[0].split("@")[1].strip(" "))
-            tp = float(signal[2].split(" ")[1])
-            sl = float(signal[5].split(" ")[1])
-            if price < tp and price > sl and order == "BUY NOW":
-                need = 1
-            elif price > tp and price < sl and order == "SELL NOW":
-                need = 1
-            else:
-                msg = "Something wrong is this signal Order.. not triggered From FMFX"
-                bot.send_message(chat_id=m, text=msg, parse_mode=telegram.ParseMode.HTML)
-                need = 0
-        except IndexError or ValueError:
-            need = 0                
-    '''
     elif send_channel == "M15 Signals" and not filetype == None:
         try:
             img_name = "pips15_c2p.jpg"
@@ -295,64 +274,7 @@ def my_handler(client, message):
             with open('title.txt', 'w') as f:
                 f.writelines(msg)      
             bot.send_document(chat_id=m, document="title.txt", caption="from "+send_channel)
-    '''
-    #getting fmfx
-    elif send_channel == "FMFX" or u_name == "fmfxofficial" and need == 1:
-        price = str(price)    
-        bot.download_media(file_name=img_name,message=message)
-        subprocess.run(["tesseract","--dpi", "70","downloads/"+img_name,text_file])
-        text= text_file+".txt"
-        f = open(text,'r')
-        pair = f.readlines()
-        if pair == ['we\n', '\n', 'ro.\n', '\n', ' \n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
-            pair = "EURCAD"
-            text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
-            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-
-        elif pair == ['a\n', '\n', ' \n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
-            pair = "EURAUD"
-            text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
-            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-
-        elif pair == ['lz\n', '\n', 'CAD\n', '\n', 'Canadian dolla\n', '\n', '    \n', '  \n', ' \n', ' \n', '\n', '{i\n', '|\n', '1\n', 'i\n', '\n', 'Rete NZelAl\n', '!\n', '\n', 'f\n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
-            pair = "CADJPY"
-            text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
-            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-
-        elif pair == ['iz\n', '\n', 'GBP\n', '\n', 'Pound sterling\n', '\n', '    \n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
-            pair = "GBPAUD"
-            text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
-            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-
-        elif pair == ['ize\n', '\n', 'GBP\n', '\n', 'Pound sterling\n', '\n', '     \n', '  \n', '\n', '|\n', 'Japanese yen\n', '!\n', '\n', 'Oyo #FMPXofficial #FULLMARGIN\n', '\x0c']:
-            pair = "GBPJPY"
-            text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
-            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-
-        elif pair == ['wae\n', '\n', ' \n', '\n', '#FULLMARGIN\n', '\n', '#FMFXofficial\n', '\n', '@fmfxofficial\n', '\x0c']:
-            pair = "EURUSD"
-            text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
-            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-        elif pair == ['FMFX\n', '\n', 'a EUR\n', '\n', '     \n', '\n', '|\n', 'Japanese yen\n', '\n', '@fmfxofficial #FMFXofficial #FULLMARGIN\n', '\x0c']:
-            pair = "EURJPY"
-            text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
-            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-        elif pair ==  ['ze\n', '\n', 'e\n', 'os\n', '2\n', 'a\n', '=\n', 'Pe\n', '\n', ' \n', '\n', '#FULLMARGIN\n', '\n', '#FMPFXofficial\n', '\n', '@fmfxofficial\n', '\x0c'] or ['izle\n', '\n', 'ollar\n', '\n', 'Se\n', '©\n', '©\n', 'o\n', '=\n', 'x\n', '\n', ' \n', '\n', '#FULLMARGIN\n', '\n', '#FMPFXofficial\n', '\n', '@fmfxofficial\n', '\x0c']:
-            pair = "XAUUSD"
-            text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom FMFX"
-            bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML) 
-        else:
-            caption = f'I cant resolve this photo From {send_channel} \n\n'
-            photo = "downloads/"+img_name
-            caption += f'Uniq string is:\n( {str(pair)} )'
-            bot.send_photo(chat_id=m, caption=caption, photo=photo)
-            bot.send_document(chat_id=m, document=text_file+".txt", caption="This is File Uniq string file")
-            msg = str(message)
-            with open('title.txt', 'w') as f:
-                f.writelines(msg)      
-            bot.send_document(chat_id=m, document="title.txt", caption="from "+send_channel)
-        #bot.send_message(chat_id=chat_id, text=text, parse_mode=telegram.ParseMode.HTML)
-    '''
+ 
     elif send_channel == "Forex Trading Professor" or u_name == "professoroff" and need == 2:
         price = str(price)                
         text = order+","+price+","+pair+","+str(tp)+","+str(sl)+" "+"  Triggering...\nFrom Professor"
