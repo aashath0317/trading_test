@@ -129,7 +129,7 @@ def my_handler(client, message):
         except IndexError or ValueError:
             need = 0
 
-   '''     
+'''     
     elif send_channel == "FMFX" or u_name == "fmfxofficial" and not filetype == None:
         try:
             img_name = "c2p_fmfx.jpg"
