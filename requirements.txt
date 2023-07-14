@@ -19,7 +19,6 @@ tenacity
 TgCrypto
 urllib3
 telethon
-aiohttp==3.7.4
 APScheduler==3.6.3
 async-timeout==3.0.1
 attrs==21.4.0
