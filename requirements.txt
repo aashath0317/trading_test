@@ -18,3 +18,4 @@ telegraph
 tenacity
 TgCrypto
 urllib3
+telethon
