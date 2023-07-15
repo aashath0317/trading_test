@@ -37,7 +37,6 @@ client.connect()
 channel_id = -1001963686318
 group_id = "@C2P_forex_bot"   #5007713837
 igroup = -990951103
-client.send_message(group_id, s_message)
 
 @client.on(events.NewMessage(chats=channel_id))
 async def my_event_handler(event):
