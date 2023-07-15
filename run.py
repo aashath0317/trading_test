@@ -37,6 +37,7 @@ client.connect()
 channel_id = -1001963686318
 group_id = "@C2P_forex_bot"   #5007713837
 igroup = -990951103
+client.send_message(group_id, s_message)
 
 @client.on(events.NewMessage(chats=channel_id))
 async def my_event_handler(event):
@@ -83,6 +84,6 @@ igroup = -990951103
 async def my_event_handler(event):
     message = str(event.text)
     await client.send_message(igroup, message)
-if __name__ == '__main__':
-    client.start()
-    client.run_until_disconnected()
+
+client.start()
+client.run_until_disconnected()
