@@ -30,63 +30,60 @@ from telethon import events
 #app = Client(session_name="new",api_id = 3030128,api_hash = 'cfc3885f5d2cbdbc5f10e6a643de2711')
 #s = await app.export_session_string()
 #app.run()
-string='1BVtsOIoBu4bgrZb1GM3Ie6DIzznXNajuAufRrFOmOYthYwTGQsj4kMaL-8c0qGAra37e1nUSP_KFnLfpWdj3n0xyGEs7Yy2kmVeFN6yfmAz4iX9b0vcsR1JmEC61c0A6WwSIPDyZseOpsmRU39sDZsGgN3hbHNstuybHUWz2K9r0hC7WaN7niXC91y29qDKPfpfhLq-s56EjAXUK5X_rlQiNd8AwAs22XRL4aZUzyExTzNGH9lGNvBluzihu9sQgCTWlgDe_FDJ6DRhdETx7VSY2pQozInBrrw3pP-AwQ1PRpCAxmEZhPOkdNhoLGl3t24o2Ib_uKyDW2CiY5pEdHT2iW74cG00='
+string='1BVtsOIoBuxry5w5N3abV2EToGHe0GFxMJXdlKXC2Y6ea3DLyHLYrXnxUvUTGV4X5quKFHlJJF5PIyc2jkzPlrcv3AQRFyP8gfKsrBOcJFLXLGjlUD_U6itx2yyVfiJZyBRvMC6qon7-LdTUvFm7PMCw0rJL3I7aYmwHs6DbXtZxkdxY_4O_ZcbP_-XpWh_JD7puo9m3DhyHISZ9PVIy-rmA67wtweOcu8-O-aiOr317jm2UNc_XaxLmuz9l-6ELz_wayVVzW89K6EZH2R_GmC2YM-4gtNI7UXyjfEpL4SrKLJ0rfVMtNc-zZXcnNq1wmCgSDwXytuvCvISiZ2X_ShUVxA-Xi1tE='
 client = telethon.TelegramClient(StringSession(string),api_id=3030128, api_hash='cfc3885f5d2cbdbc5f10e6a643de2711')
 client.connect()
-def main():
-    channel_id = -1001963686318
-    group_id = "@C2P_forex_bot"   #5007713837
-    igroup = -990951103
-    
-    @client.on(events.NewMessage(chats=channel_id))
-    async def my_event_handler(event):
-        message = str(event.text)
-        #send_channel = message.chat.title
-        pair = ""
-        string = message
-        tstring = string.split("\n")
-        def remove_empty_datatypes(list_of_strings):
-            new_list = []
-            for string in list_of_strings:
-                if string:
-                    new_list.append(string)
-            return new_list
-        try:
-            list_of_strings = tstring
-            tstring = remove_empty_datatypes(list_of_strings)
-            pao = tstring[0].split(" ")
-            pair = pao[0]
-            order = pao[1]
-            order_check = pao[2].upper()
-        except IndexError:
-             await client.send_message(igroup, 'Trading Not Placed \n Check this string  \n '+str(tstring))
-             return
-        if order_check == "NOW":
-            sl = str(tstring[1].split(":")[1].strip(" "))
-            tp1 = str(tstring[2].split(":")[1].strip(" "))
-            tp2 = str(tstring[3].split(":")[1].strip(" "))
-            if pair == "GOLD":
-                pair = "XAUUSD"
-            else:
-                pass 
-            s_message = order+" "+pair+"\n"+"Entry NOW"+"\n"+"SL "+sl+"\n"+"TP "+tp1
-           # s_message = order+" "+pair+"\n"+"Entry NOW"+"\n"+"SL "+sl+"\n"+"TP1 "+tp1+"\n"+"TP2 "+tp2
-            await client.send_message(group_id, "/trade")
-            await client.send_message(group_id, s_message)
+
+channel_id = -1001963686318
+group_id = "@C2P_forex_bot"   #5007713837
+igroup = -990951103
+client.send_message(group_id, s_message)
+
+@client.on(events.NewMessage(chats=channel_id))
+async def my_event_handler(event):
+    message = str(event.text)
+    #send_channel = message.chat.title
+    pair = ""
+    string = message
+    tstring = string.split("\n")
+    def remove_empty_datatypes(list_of_strings):
+        new_list = []
+        for string in list_of_strings:
+            if string:
+                new_list.append(string)
+        return new_list
+    try:
+        list_of_strings = tstring
+        tstring = remove_empty_datatypes(list_of_strings)
+        pao = tstring[0].split(" ")
+        pair = pao[0]
+        order = pao[1]
+        order_check = pao[2].upper()
+    except IndexError:
+         await client.send_message(igroup, 'Trading Not Placed \n Check this string  \n '+str(tstring))
+         return
+    if order_check == "NOW":
+        sl = str(tstring[1].split(":")[1].strip(" "))
+        tp1 = str(tstring[2].split(":")[1].strip(" "))
+        tp2 = str(tstring[3].split(":")[1].strip(" "))
+        if pair == "GOLD":
+            pair = "XAUUSD"
         else:
-            await client.send_message(igroup, 'Trading Not Placed \n Check this string  \n '+str(tstring))
-    
-    channel_2 = "@C2P_forex_bot"
-    igroup = -990951103
-    
-    @client.on(events.NewMessage(chats=channel_2))
-    async def my_event_handler(event):
-        message = str(event.text)
-        await client.send_message(igroup, message)
-    
-    client.start()
-    return
-    client.run_until_disconnected()
-    
+            pass 
+        s_message = order+" "+pair+"\n"+"Entry NOW"+"\n"+"SL "+sl+"\n"+"TP "+tp1
+       # s_message = order+" "+pair+"\n"+"Entry NOW"+"\n"+"SL "+sl+"\n"+"TP1 "+tp1+"\n"+"TP2 "+tp2
+        await client.send_message(group_id, "/trade")
+        await client.send_message(group_id, s_message)
+    else:
+        await client.send_message(igroup, 'Trading Not Placed \n Check this string  \n '+str(tstring))
+
+channel_2 = "@C2P_forex_bot"
+igroup = -990951103
+
+@client.on(events.NewMessage(chats=channel_2))
+async def my_event_handler(event):
+    message = str(event.text)
+    await client.send_message(igroup, message)
 if __name__ == '__main__':
-    main()
+    client.start()
+    client.run_until_disconnected()
