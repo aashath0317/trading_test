@@ -1,4 +1,3 @@
-    
 import re
 import time
 import telegram
@@ -34,9 +33,12 @@ from telethon import events
 string='1BVtsOIoBuxry5w5N3abV2EToGHe0GFxMJXdlKXC2Y6ea3DLyHLYrXnxUvUTGV4X5quKFHlJJF5PIyc2jkzPlrcv3AQRFyP8gfKsrBOcJFLXLGjlUD_U6itx2yyVfiJZyBRvMC6qon7-LdTUvFm7PMCw0rJL3I7aYmwHs6DbXtZxkdxY_4O_ZcbP_-XpWh_JD7puo9m3DhyHISZ9PVIy-rmA67wtweOcu8-O-aiOr317jm2UNc_XaxLmuz9l-6ELz_wayVVzW89K6EZH2R_GmC2YM-4gtNI7UXyjfEpL4SrKLJ0rfVMtNc-zZXcnNq1wmCgSDwXytuvCvISiZ2X_ShUVxA-Xi1tE='
 client = telethon.TelegramClient(StringSession(string),api_id=3030128, api_hash='cfc3885f5d2cbdbc5f10e6a643de2711')
 client.connect()
+
 channel_id = -1001963686318
 group_id = "@C2P_forex_bot"   #5007713837
 igroup = -990951103
+await client.send_message(group_id, s_message)
+
 @client.on(events.NewMessage(chats=channel_id))
 async def my_event_handler(event):
     message = str(event.text)
