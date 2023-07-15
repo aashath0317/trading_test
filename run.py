@@ -1,3 +1,4 @@
+    
 import re
 import time
 import telegram
@@ -30,7 +31,7 @@ from telethon import events
 #app = Client(session_name="new",api_id = 3030128,api_hash = 'cfc3885f5d2cbdbc5f10e6a643de2711')
 #s = await app.export_session_string()
 #app.run()
-string='1BVtsOJ4Bu4MsusVLwZ_P9vZu8UnOBwjDcmdGMSUIfbT-ar9P4zhc3OGgeUrah-rNYzU5YP6Yj-hZZ9DKKj2qJuhxBuOfq1e1txL7Y5pLN_F18SVTQHxJF6HoJRrryk3UXRTP3zluC0jlmBdbVQiEVMX4ukmZo_E_dW8Bd3I5JQhuDh8rL_PrLIICLFYnVHHlALqT78oN6d78P1Eg6v98ndHfZsK5Ta5G3YGRocQv0Y34RapaWQSw0gzmcu7i2d_LuuzJ4j7QhzPnrmXiIP3_4bamaNf3e1J55vdqQPgQz1aRP_2CuIg6uEi-DXt8cEz6SN0EIXufAz7Pqfpk5cN62CxFQ4CR7rE='
+string='1BVtsOIoBuxry5w5N3abV2EToGHe0GFxMJXdlKXC2Y6ea3DLyHLYrXnxUvUTGV4X5quKFHlJJF5PIyc2jkzPlrcv3AQRFyP8gfKsrBOcJFLXLGjlUD_U6itx2yyVfiJZyBRvMC6qon7-LdTUvFm7PMCw0rJL3I7aYmwHs6DbXtZxkdxY_4O_ZcbP_-XpWh_JD7puo9m3DhyHISZ9PVIy-rmA67wtweOcu8-O-aiOr317jm2UNc_XaxLmuz9l-6ELz_wayVVzW89K6EZH2R_GmC2YM-4gtNI7UXyjfEpL4SrKLJ0rfVMtNc-zZXcnNq1wmCgSDwXytuvCvISiZ2X_ShUVxA-Xi1tE='
 client = telethon.TelegramClient(StringSession(string),api_id=3030128, api_hash='cfc3885f5d2cbdbc5f10e6a643de2711')
 client.connect()
 channel_id = -1001963686318
