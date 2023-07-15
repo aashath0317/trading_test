@@ -1,3 +1,10 @@
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+'''
 import re
 import time
 import telegram
@@ -82,6 +89,7 @@ igroup = -990951103
 async def my_event_handler(event):
     message = str(event.text)
     await client.send_message(igroup, message)
-
+updater.start_webhook(listen="0.0.0.0", port=PORT)
+updater.idle()
 client.start()
 client.run_until_disconnected()
