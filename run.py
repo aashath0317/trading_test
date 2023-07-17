@@ -34,7 +34,7 @@ string='1BVtsOKMBuz4X-4AKv0rgxucjXT5GZ8cPtxNoF3oFtfakZUrsB0Hytp1eag_HRRa6_JdunOc
 client = telethon.TelegramClient(StringSession(string),api_id=3030128, api_hash='cfc3885f5d2cbdbc5f10e6a643de2711')
 client.connect()
 
-channel_id = -1001963686318
+channel_id = -1001981997793
 group_id = "@C2P_forex_bot"   #5007713837
 igroup = -990951103
 
